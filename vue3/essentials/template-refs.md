@@ -10,7 +10,7 @@
 
 ## 訪問模板引用 {#accessing-the-refs}
 
-<div class="composition-api">
+composition-api
 
 為了通過組合式 API 獲得該模板引用，我們需要聲明一個同名的 ref：
 
@@ -46,8 +46,8 @@ export default {
 }
 ```
 
-</div>
-<div class="options-api">
+
+options-api
 
 掛載結束後引用都會被暴露在 `this.$refs` 之上：
 
@@ -65,11 +65,11 @@ export default {
 </template>
 ```
 
-</div>
+
 
 注意，你只可以**在組件掛載後**才能訪問模板引用。如果你想在模板中的表達式上訪問 <span class="options-api">`$refs.input`</span><span class="composition-api">`input`</span>，在初次渲染時會是 `null`。這是因為在初次渲染前這個元素還不存在呢！
 
-<div class="composition-api">
+composition-api
 
 如果你需要偵聽一個模板引用 ref 的變化，確保考慮到其值為 `null` 的情況：
 
@@ -85,13 +85,12 @@ watchEffect(() => {
 
 也可參考：[為模板引用標注類型](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
 
-</div>
 
 ## `v-for` 中的模板引用 {#refs-inside-v-for}
 
 > 需要 v3.2.25 及以上版本
 
-<div class="composition-api">
+composition-api
 
 當在 `v-for` 中使用模板引用時，對應的 ref 中包含的值是一個數組，它將在元素被掛載後包含對應整個列表的所有元素：
 
@@ -119,8 +118,7 @@ onMounted(() => console.log(itemRefs.value))
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpFjs1qwzAQhF9l0CU2uDZtb8UOlJ576bXqwaQyCGRJyCsTEHr3rGwnOehnd2e+nSQ+vW/XqMSH6JdL0J6wKIr+LK2evQuEhKCmBs5+u2hJ/SNjCm7GiV0naaW9OLsQjOZrKNrq97XBW4P3v/o51qTmHzUtd8k+e0CrqsZwRpIWGI0KVN0N7TqaqNp59JUuEt2SutKXY5elmimZT9/t2Tk1F+z0ZiTFFdBHs738Mxrry+TCIEWhQ9sttRQl0tEsK6U4HEBKW3LkfDA6o3dst3H77rFM5BtTfm/P)
 
-</div>
-<div class="options-api">
+options-api
 
 當在 `v-for` 中使用模板引用時，相應的引用中包含的值是一個數組：
 
@@ -151,7 +149,7 @@ export default {
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpFjk0KwjAQha/yCC4Uaou6kyp4DuOi2KkGYhKSiQildzdNa4WQmTc/37xeXJwr35HEUdTh7pXjszT0cdYzWuqaqBm9NEDbcLPeTDngiaM3PwVoFfiI667AvsDhNpWHMQzF+L9sNEztH3C3JlhNpbaPNT9VKFeeulAqplfY5D1p0qurxVQSqel0w5QUUEedY8q0wnvbWX+SYgRAmWxIiuSzm4tBinkc6HvkuSE7TIBKq4lZZWhdLZfE8AWp4l3T)
 
-</div>
+
 
 應該注意的是，ref 數組**並不**保證與源數組相同的順序。
 
@@ -171,7 +169,7 @@ export default {
 
 模板引用也可以被用在一個子組件上。這種情況下引用中獲得的值是組件實例：
 
-<div class="composition-api">
+composition-api
 
 ```vue
 <script setup>
@@ -190,8 +188,7 @@ onMounted(() => {
 </template>
 ```
 
-</div>
-<div class="options-api">
+options-api
 
 ```vue
 <script>
@@ -212,11 +209,9 @@ export default {
 </template>
 ```
 
-</div>
-
 如果一個子組件使用的是選項式 API <span class="composition-api">或沒有使用 `<script setup>`</span>，被引用的組件實例和該子組件的 `this` 完全一致，這意味著父組件對子組件的每一個屬性和方法都有完全的訪問權。這使得在父組件和子組件之間創建緊密耦合的實現細節變得很容易，當然也因此，應該只在絕對需要時才使用組件引用。大多數情況下，你應該首先使用標準的 props 和 emit 接口來實現父子組件交互。
 
-<div class="composition-api">
+composition-api
 
 有一個例外的情況，使用了 `<script setup>` 的組件是**默認私有**的：一個父組件無法訪問到一個使用了 `<script setup>` 的子組件中的任何東西，除非子組件在其中通過 `defineExpose` 宏顯式暴露：
 
@@ -239,8 +234,8 @@ defineExpose({
 
 TypeScript 用戶請參考：[為組件的模板引用標注類型](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
-</div>
-<div class="options-api">
+
+options-api
 
 `expose` 選項可以用於限制對子組件實例的訪問：
 
@@ -265,5 +260,3 @@ export default {
 ```
 
 在上面這個例子中，父組件通過模板引用訪問到子組件實例後，僅能訪問 `publicData` 和 `publicMethod`。
-
-</div>
