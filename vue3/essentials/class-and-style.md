@@ -16,16 +16,14 @@
 
 你可以在對象中寫多個字段來操作多個 class。此外，`:class` 指令也可以和一般的 `class` attribute 共存。舉例來說，下面這樣的狀態：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const isActive = ref(true)
 const hasError = ref(false)
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -35,8 +33,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 配合以下模板：
 
@@ -57,7 +53,7 @@ data() {
 
 綁定的對象並不一定需要寫成內聯字面量的形式，也可以直接綁定一個對象：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const classObject = reactive({
@@ -66,9 +62,7 @@ const classObject = reactive({
 })
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -80,8 +74,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 ```vue-html
 <div :class="classObject"></div>
@@ -95,7 +87,7 @@ data() {
 
 我們也可以綁定一個返回對象的[計算屬性](./computed)。這是一個常見且很有用的技巧：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const isActive = ref(true)
@@ -107,9 +99,7 @@ const classObject = computed(() => ({
 }))
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -128,8 +118,6 @@ computed: {
 }
 ```
 
-</div>
-
 ```vue-html
 <div :class="classObject"></div>
 ```
@@ -138,16 +126,14 @@ computed: {
 
 我們可以給 `:class` 綁定一個數組來渲染多個 CSS class：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const activeClass = ref('active')
 const errorClass = ref('text-danger')
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -157,8 +143,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 ```vue-html
 <div :class="[activeClass, errorClass]"></div>
@@ -249,16 +233,14 @@ Class 的綁定也是同樣的：
 
 `:style` 支持綁定 JavaScript 對象值，對應的是 [HTML 元素的 `style` 屬性](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const activeColor = ref('red')
 const fontSize = ref(30)
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -268,8 +250,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 ```vue-html
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -283,7 +263,7 @@ data() {
 
 直接綁定一個樣式對象通常是一個好主意，這樣可以使模板更加簡潔：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const styleObject = reactive({
@@ -292,9 +272,7 @@ const styleObject = reactive({
 })
 ```
 
-</div>
-
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -306,8 +284,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 ```vue-html
 <div :style="styleObject"></div>

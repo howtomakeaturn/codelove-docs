@@ -38,9 +38,8 @@ Vue 使用一種基於 HTML 的模板語法，使我們能夠聲明式地將其�
 
 `span` 的內容將會被替換為 `rawHtml` 屬性的值，插值為純 HTML——數據綁定將會被忽略。注意，你不能使用 `v-html` 來拼接組合模板，因為 Vue 不是一個基於字符串的模板引擎。在使用 Vue 時，應當使用組件作為 UI 重用和組合的基本單元。
 
-:::warning 安全警告
-在網站上動態渲染任意 HTML 是非常危險的，因為這非常容易造成 [XSS 漏洞](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)。請僅在內容安全可信時再使用 `v-html`，並且**永遠不要**使用用戶提供的 HTML 內容。
-:::
+> 安全警告
+> 在網站上動態渲染任意 HTML 是非常危險的，因為這非常容易造成 [XSS 漏洞](https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC)。請僅在內容安全可信時再使用 `v-html`，並且**永遠不要**使用用戶提供的 HTML 內容。
 
 ## Attribute 綁定 {#attribute-bindings}
 
@@ -80,7 +79,7 @@ Vue 使用一種基於 HTML 的模板語法，使我們能夠聲明式地將其�
 
 如果你有像這樣的一個包含多個 attribute 的 JavaScript 對象：
 
-<div class="composition-api">
+composition-api
 
 ```js
 const objectOfAttrs = {
@@ -89,8 +88,7 @@ const objectOfAttrs = {
 }
 ```
 
-</div>
-<div class="options-api">
+options-api
 
 ```js
 data() {
@@ -102,8 +100,6 @@ data() {
   }
 }
 ```
-
-</div>
 
 通過不帶參數的 `v-bind`，你可以將它們綁定到單個元素上：
 
@@ -156,9 +152,7 @@ data() {
 </time>
 ```
 
-:::tip
-綁定在表達式中的方法在組件每次更新時都會被重新調用，因此**不**應該產生任何副作用，比如改變數據或觸發異步操作。
-:::
+> 綁定在表達式中的方法在組件每次更新時都會被重新調用，因此**不**應該產生任何副作用，比如改變數據或觸發異步操作。
 
 ### 受限的全局訪問 {#restricted-globals-access}
 
@@ -265,7 +259,7 @@ data() {
 
 最後，在這里你可以直觀地看到完整的指令語法：
 
-![指令語法圖](./images/directive.png)
+![指令語法圖](https://cn.vuejs.org/assets/directive.69c37117.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->
 

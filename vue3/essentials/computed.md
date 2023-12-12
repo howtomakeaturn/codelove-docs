@@ -4,7 +4,7 @@
 
 模板中的表達式雖然方便，但也只能用來做簡單的操作。如果在模板中寫太多邏輯，會讓模板變得臃腫，難以維護。比如說，我們有這樣一個包含嵌套數組的對象：
 
-<div class="options-api">
+options-api
 
 ```js
 export default {
@@ -23,8 +23,7 @@ export default {
 }
 ```
 
-</div>
-<div class="composition-api">
+composition-api
 
 ```js
 const author = reactive({
@@ -37,8 +36,6 @@ const author = reactive({
 })
 ```
 
-</div>
-
 我們想根據 `author` 是否已有一些書籍來展示不同的信息：
 
 ```vue-html
@@ -50,7 +47,7 @@ const author = reactive({
 
 因此我們推薦使用**計算屬性**來描述依賴響應式狀態的覆雜邏輯。這是重構後的示例：
 
-<div class="options-api">
+options-api
 
 ```js
 export default {
@@ -91,9 +88,7 @@ export default {
 
 也可參考：[為計算屬性標記類型](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
-</div>
-
-<div class="composition-api">
+composition-api
 
 ```vue
 <script setup>
@@ -128,8 +123,6 @@ Vue 的計算屬性會自動追蹤響應式依賴。它會檢測到 `publishedBo
 
 也可參考：[為計算屬性標注類型](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
-</div>
-
 ## 計算屬性緩存 vs 方法 {#computed-caching-vs-methods}
 
 你可能注意到我們在表達式中像這樣調用一個函數也會獲得和計算屬性相同的結果：
@@ -138,7 +131,7 @@ Vue 的計算屬性會自動追蹤響應式依賴。它會檢測到 `publishedBo
 <p>{{ calculateBooksMessage() }}</p>
 ```
 
-<div class="options-api">
+options-api
 
 ```js
 // 組件中
@@ -149,9 +142,7 @@ methods: {
 }
 ```
 
-</div>
-
-<div class="composition-api">
+composition-api
 
 ```js
 // 組件中
@@ -160,13 +151,11 @@ function calculateBooksMessage() {
 }
 ```
 
-</div>
-
 若我們將同樣的函數定義為一個方法而不是計算屬性，兩種方式在結果上確實是完全相同的，然而，不同之處在於**計算屬性值會基於其響應式依賴被緩存**。一個計算屬性僅會在其響應式依賴更新時才重新計算。這意味著只要 `author.books` 不改變，無論多少次訪問 `publishedBooksMessage` 都會立即返回先前的計算結果，而不用重覆執行 getter 函數。
 
 這也解釋了為什麼下面的計算屬性永遠不會更新，因為 `Date.now()` 並不是一個響應式依賴：
 
-<div class="options-api">
+options-api
 
 ```js
 computed: {
@@ -176,15 +165,11 @@ computed: {
 }
 ```
 
-</div>
-
-<div class="composition-api">
+composition-api
 
 ```js
 const now = computed(() => Date.now())
 ```
-
-</div>
 
 相比之下，方法調用**總是**會在重渲染發生時再次執行函數。
 
@@ -194,7 +179,7 @@ const now = computed(() => Date.now())
 
 計算屬性默認是只讀的。當你嘗試修改一個計算屬性時，你會收到一個運行時警告。只在某些特殊場景中你可能才需要用到“可寫”的屬性，你可以通過同時提供 getter 和 setter 來創建：
 
-<div class="options-api">
+options-api
 
 ```js
 export default {
@@ -222,9 +207,7 @@ export default {
 
 現在當你再運行 `this.fullName = 'John Doe'` 時，setter 會被調用而 `this.firstName` 和 `this.lastName` 會隨之更新。
 
-</div>
-
-<div class="composition-api">
+composition-api
 
 ```vue
 <script setup>
@@ -248,8 +231,6 @@ const fullName = computed({
 ```
 
 現在當你再運行 `fullName.value = 'John Doe'` 時，setter 會被調用而 `firstName` 和 `lastName` 會隨之更新。
-
-</div>
 
 ## 最佳實踐 {#best-practices}
 

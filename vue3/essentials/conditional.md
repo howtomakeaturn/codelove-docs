@@ -1,10 +1,5 @@
 # 條件渲染 {#conditional-rendering}
 
-<script setup>
-import { ref } from 'vue'
-const awesome = ref(true)
-</script>
-
 ## `v-if` {#v-if}
 
 `v-if` 指令用於條件性地渲染一塊內容。這塊內容只會在指令的表達式返回真值時才被渲染。
@@ -24,22 +19,13 @@ const awesome = ref(true)
 <h1 v-else>Oh no 😢</h1>
 ```
 
-<div class="demo">
-  <button @click="awesome = !awesome">Toggle</button>
-  <h1 v-if="awesome">Vue is awesome!</h1>
-  <h1 v-else>Oh no 😢</h1>
-</div>
-
-<div class="composition-api">
+composition-api
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpFjkEOgjAQRa8ydIMulLA1hegJ3LnqBskAjdA27RQXhHu4M/GEHsEiKLv5mfdf/sBOxux7j+zAuCutNAQOyZtcKNkZbQkGsFjBCJXVHcQBjYUSqtTKERR3dLpDyCZmQ9bjViiezKKgCIGwM21BGBIAv3oireBYtrK8ZYKtgmg5BctJ13WLPJnhr0YQb1Lod7JaS4G8eATpfjMinjTphC8wtg7zcwNKw/v5eC1fnvwnsfEDwaha7w==)
 
-</div>
-<div class="options-api">
+options-api
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpFjj0OwjAMha9iMsEAFWuVVnACNqYsoXV/RJpEqVOQqt6DDYkTcgRSWoplWX7y56fXs6O1u84jixlvM1dbSoXGuzWOIMdCekXQCw2QS5LrzbQLckje6VEJglDyhq1pMAZyHidkGG9hhObRYh0EYWOVJAwKgF88kdFwyFSdXRPBZidIYDWvgqVkylIhjyb4ayOIV3votnXxfwrk2SPU7S/PikfVfsRnGFWL6akCbeD9fLzmK4+WSGz4AA5dYQY=)
-
-</div>
 
 一個 `v-else` 元素必須跟在一個 `v-if` 或者 `v-else-if` 元素後面，否則它將不會被識別。
 
@@ -102,8 +88,8 @@ const awesome = ref(true)
 
 ## `v-if` 和 `v-for` {#v-if-with-v-for}
 
-::: warning 警告
-同時使用 `v-if` 和 `v-for` 是**不推薦的**，因為這樣二者的優先級不明顯。請查看[風格指南](/style-guide/rules-essential#avoid-v-if-with-v-for)獲得更多信息。
-:::
+> 警告
+> 同時使用 `v-if` 和 `v-for` 是**不推薦的**，因為這樣二者的優先級不明顯。請查看[風格指南](/style-guide/rules-essential#avoid-v-if-with-v-for)獲得更多信息。
+
 
 當 `v-if` 和 `v-for` 同時存在於一個元素上的時候，`v-if` 會首先被執行。請查看[列表渲染指南](list#v-for-with-v-if)獲取更多細節。
