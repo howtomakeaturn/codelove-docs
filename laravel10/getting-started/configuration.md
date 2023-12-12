@@ -11,13 +11,15 @@
 - [調試模式](#debug-mode)
 - [維護模式](#maintenance-mode)
 
-## 介紹 {#introduction}
+<a name="introduction"></a>
+## 介紹
 
 Laravel 框架的所有配置文件都存儲在`config`目錄中。每個選項都有文檔記錄，因此請隨意查看文件並熟悉可用的選項。
 
 這些配置文件允許你配置諸如數據庫連接信息、郵件服務器信息以及各種其他核心配置值（例如應用程序時區和加密密鑰）之類的事項。
 
-#### 應用概述 {#application-overview}
+<a name="application-overview"></a>
+#### 應用概述
 
 為了方便你可以通過`about`Artisan 命令快速了解應用程序的配置、驅動程序和環境：
 
@@ -34,8 +36,8 @@ php artisan about --only=environment
 ```shell
 php artisan config:show database
 ```
-
-## 環境配置 {#environment-configuration}
+<a name="environment-configuration"></a>
+## 環境配置
 
 根據應用程序運行的環境，有不同的配置值通常是有幫助的。例如，你可能希望在本地使用不同的緩存驅動程序，而在生產服務器上則使用另一個。
 
@@ -48,17 +50,20 @@ Laravel 的默認`.env`文件包含一些常見的配置值，這些值可能會
 > **技巧**
 > `.env`文件中的任何變量都可以被外部環境變量覆蓋，例如服務器級或系統級環境變量。
 
-#### 環境文件安全 {#environment-file-security}
+<a name="environment-file-security"></a>
+#### 環境文件安全
 
 你的`.env`文件不應該提交到版本管理器中，首先，使用應用程序的每個開發人員 / 服務器可能需要不同的環境配置。其次，如果入侵者獲得了對版本管理器的訪問權限，這將成為一個安全風險，他將能看到配置文件中的敏感數據。
 
 但是，可以使用 Laravel 的內置 [加密環境](#encrypting-environment-files)。加密環境文件可以安全地放置在源代碼管理中。
 
-#### 附加環境文件 {#additional-environment-files}
+<a name="additional-environment-files"></a>
+#### 附加環境文件
 
 在加載應用程序的環境變量之前，Laravel 會確定是否已經從外部提供了`APP_ENV`環境變量，或者是否指定了`--env`CLI 參數。如果是這樣，Laravel 將嘗試加載一個`.env.[APP_ENV]`文件（如果它存在）。 如果它不存在，將加載默認的`.env`文件。
 
-### 環境變量類型 {#environment-variable-types}
+<a name="environment-variable-types"></a>
+### 環境變量類型
 
 `.env`文件中的所有變量通常都被解析為字符串，因此創建了一些保留值以允許你從`env()`函數返回更廣泛的類型：
 
@@ -79,7 +84,8 @@ Laravel 的默認`.env`文件包含一些常見的配置值，這些值可能會
 APP_NAME="My Application"
 ```
 
-### 獲取環境配置 {#retrieving-environment-configuration}
+<a name="retrieving-environment-configuration"></a>
+### 獲取環境配置
 
 當應用程序收到請求時`.env`文件中列出的所有變量將被加載到 PHP 的超級全局變量`$_ENV`中。你可以使用`env`函數檢索這些變量的值。實際上，如果你看過 Laravel 的配置文件，就能注意到有數個選項已經使用了這個函數：
 
@@ -87,7 +93,8 @@ APP_NAME="My Application"
 
 `env`函數的第二個參數是「默認值」。 當沒有找到對應環境變量時將返回 「默認值」。
 
-### 獲取當前環境配置 {#determining-the-current-environment}
+<a name="determining-the-current-environment"></a>
+### 獲取當前環境配置
 
 當前應用的環境配置是從你的`.env`文件中的`APP_ENV`變量配置的。你可以通過`App` [facade](/docs/laravel/10.x/facades) 的`environment`函數獲取：
 
@@ -108,11 +115,13 @@ APP_NAME="My Application"
 > **技巧**
 > 當前應用程序的環境檢測，可以通過定義服務器級`APP_ENV`環境變量來覆蓋。
 
-### 環境文件加密 {#encrypting-environment-files}
+<a name="encrypting-environment-files"></a>
+### 環境文件加密
 
 未加密的環境文件不應該被存儲在源碼控制中. 然而, Laravel允許你加密你的環境文件, 這樣他們就可以安全地與你的應用程序的其他部分一起被添加到源碼控制中.
 
-#### 加密 {#encryption}
+<a name="encryption"></a>
+#### 加密
 
 為了加密環境文件，你可以使用`env:encrypt`命令。
 
@@ -135,7 +144,8 @@ php artisan env:encrypt --key=3UVsEgGVK36XN82KKeyLFMhvosbZN1aF
 php artisan env:encrypt --env=staging
 ```
 
-#### 解密 {#decryption}
+<a name="decryption"></a>
+#### 解密
 
 要解密一個環境文件, 你可以使用`env:decrypt`命令. 這個命令需要一個解密密鑰, Laravel會從`LARAVEL_ENV_ENCRYPTION_KEY`環境變量中獲取.:
 
@@ -169,7 +179,8 @@ php artisan env:decrypt --env=staging
 php artisan env:decrypt --force
 ```
 
-## 訪問配置值 {#accessing-configuration-values}
+<a name="accessing-configuration-values"></a>
+## 訪問配置值
 
 你可以在應用程序的任何地方使用全局 `config` 函數輕松訪問你的配置值。可以使用 "點" 語法來訪問配置值，其中包括你希望訪問的文件和選項的名稱。如果配置選項不存在，則可以指定默認值，如果不存在則返回默認值：
 
@@ -182,7 +193,8 @@ php artisan env:decrypt --force
 
     config(['app.timezone' => 'America/Chicago']);
 
-## 配置緩存 {#configuration-caching}
+<a name="configuration-caching"></a>
+## 配置緩存
 
 為了提高應用程序的速度，你應該使用`config:cache`Artisan 命令將所有配置文件緩存到一個文件中。 這會將應用程序的所有配置選項組合到一個文件中，框架可以快速加載該文件。
 
@@ -195,13 +207,15 @@ php artisan env:decrypt --force
 > **注意**
 > 如果你在部署過程中執行`config:cache`命令，則應確保僅從配置文件中調用`env`函數。一旦配置被緩存，`.env`文件將不會被加載；因此，`env`函數只會返回外部的系統級環境變量。
 
-## 調試模式 {#debug-mode}
+<a name="debug-mode"></a>
+## 調試模式
 
 `config/app.php`配置文件中的`debug`選項決定了實際向用戶顯示的錯誤信息量。 默認情況下，此選項設置為尊重`APP_DEBUG`環境變量的值，該變量存儲在你的`.env`文件中。
 
 對於本地開發，你應該將`APP_DEBUG`環境變量設置為`true`。 **在你的生產環境中，此值應始終為`false`。 如果在生產環境中將該變量設置為`true`，你可能會將敏感的配置值暴露給應用程序的最終用戶。**
 
-## 維護模式 {#maintenance-mode}
+<a name="maintenance-mode"></a>
+## 維護模式
 
 當你的應用程序處於維護模式時，將為你的應用程序的所有請求顯示一個自定義視圖。 這使得在更新或執行維護時可以輕松「禁用」你的應用程序。 維護模式檢查包含在應用程序的默認中間件堆棧中。 如果應用程序處於維護模式，則會拋出一個`Symfony\Component\HttpKernel\Exception\HttpException`實例，狀態碼為 503。
 
@@ -223,7 +237,8 @@ php artisan down --refresh=15
 php artisan down --retry=60
 ```
 
-#### 繞過維護模式 {#bypassing-maintenance-mode}
+<a name="bypassing-maintenance-mode"></a>
+#### 繞過維護模式
 
 即使在維護模式下，你也可以使用`secret`選項來指定維護模式繞過令牌：
 
@@ -240,7 +255,8 @@ https://example.com/1630542a-246b-4b66-afa1-dd72a4c43515
 > **技巧**
 > 你的維護模式 secret 通常應由字母數字字符和可選的破折號組成。應避免使用 URL 中具有特殊含義的字符，例如 `?`。
 
-#### 預渲染維護模式視圖 {#pre-rendering-the-maintenance-mode-view}
+<a name="pre-rendering-the-maintenance-mode-view"></a>
+#### 預渲染維護模式視圖
 
 如果在部署期間中使用 `php artisan down` 命令，當你的 Composer 依賴或其基礎組件更新的時候，你的用戶也可能遇到偶然性的錯誤。這是因為 Laravel 框架的重要部分必須啟動才能確定應用程序處於維護模式，並使用模板引擎呈現維護模式視圖。
 
@@ -250,7 +266,8 @@ https://example.com/1630542a-246b-4b66-afa1-dd72a4c43515
 php artisan down --render="errors::503"
 ```
 
-#### 重定向維護模式請求 {#redirecting-maintenance-mode-requests}
+<a name="redirecting-maintenance-mode-requests"></a>
+#### 重定向維護模式請求
 
 在維護模式下，Laravel 將顯示用戶試圖訪問的所有應用程序 url 的維護模式視圖。如果你願意，你可以指示 Laravel 重定向所有請求到一個特定的 URL。這可以使用 `redirect` 選項來實現。例如，你可能希望將所有請求重定向到 `/` URI：
 
@@ -258,7 +275,8 @@ php artisan down --render="errors::503"
 php artisan down --redirect=/
 ```
 
-#### 禁用維護模式 {#disabling-maintenance-mode}
+<a name="disabling-maintenance-mode"></a>
+#### 禁用維護模式
 
 要禁用維護模式，請使用 `up` 命令：
 
@@ -269,10 +287,12 @@ php artisan up
 > **技巧**
 > 你可以通過在`resources/views/errors/503.blade.php`中定義自己的維護模式模板。
 
-#### 維護模式 & 隊列 {#maintenance-mode-queues}
+<a name="maintenance-mode-queues"></a>
+#### 維護模式 & 隊列
 
 當應用程序處於維護模式時，將不會處理任何 [隊列任務](/docs/laravel/10.x/queues)。一旦應用程序退出維護模式，像往常一樣繼續處理。
 
-#### 維護模式的替代方法 {#alternatives-to-maintenance-mode}
+<a name="alternatives-to-maintenance-mode"></a>
+#### 維護模式的替代方法
 
 由於維護模式要求你的應用程序有幾秒鐘的停機時間，因此你可以考慮使用 [Laravel Vapor](https://vapor.laravel.com) 和 [Envoyer](https://envoyer.io) 等替代方案來實現 Laravel 零停機部署。

@@ -12,13 +12,19 @@
 - [調試模式](#debug-mode)
 - [使用 Forge / Vapor 進行部署](#deploying-with-forge-or-vapor)
 
-## 介紹 {#introduction}
+<a name="introduction"></a>
+
+## 介紹
 
 當你準備將 Laravel 應用程序部署到生產環境時，你可以做一些重要的事情來確保應用程序盡可能高效地運行。本文將會提供幾個範本以使你的 Laravel 應用部署妥當。
 
-## 服務器要求 {#server-requirements}
+<a name="server-requirements"></a>
+
+## 服務器要求
 
 Laravel 框架有一些系統要求。你應該確保你的 Web 服務器具有以下最低 PHP 版本和擴展：
+
+<div class="content-list" markdown="1">
 
 - PHP >= 8.1
 - Ctype PHP 擴展
@@ -35,9 +41,15 @@ Laravel 框架有一些系統要求。你應該確保你的 Web 服務器具有�
 - Tokenizer PHP 擴展
 - XML PHP 擴展
 
-## 服務器配置 {#server-configuration}
+</div>
 
-### Nginx {#nginx}
+<a name="server-configuration"></a>
+
+## 服務器配置
+
+<a name="nginx"></a>
+
+### Nginx
 
 如果你將應用程序部署到運行 Nginx 的服務器上，你可以將以下配置文件作為為你的 Web 服務器配置的起點。最有可能需要根據你的服務器配置自定義此文件。**如果你需要管理服務器，請考慮使用官方的 Laravel 服務器管理和部署服務，如 [Laravel Forge](https://forge.laravel.com)。**
 
@@ -77,10 +89,13 @@ server {
     }
 }
 ```
+<a name="optimization"></a>
 
-## 優化 {#optimization}
+## 優化
 
-### 優化自動加載器 {#autoloader-optimization}
+<a name="autoloader-optimization"></a>
+
+### 優化自動加載器
 
 在部署到生產環境時，請確保你正在優化 Composer 的類自動加載器映射，以便 Composer 可以快速找到適合給定類加載的文件：
 
@@ -91,7 +106,9 @@ composer install --optimize-autoloader --no-dev
 > **注意**
 > 除了優化自動加載器之外，你還應該始終確保在項目的源代碼控制存儲庫中包括一個 `composer.lock` 文件。存在 `composer.lock` 文件時，可以更快地安裝項目的依賴項。
 
-### 優化配置加載 {#optimizing-configuration-loading}
+<a name="optimizing-configuration-loading"></a>
+
+### 優化配置加載
 
 在將應用程序部署到生產環境時，你應該確保在部署過中運行 `config:cache` Artisan 命令來提前對一些配置文件做一下緩存：
 
@@ -104,7 +121,9 @@ php artisan config:cache
 > **警告**
 > 如果你在部署過程中執行 `config:cache` 命令，應確保僅從配置文件中調用 `env` 函數。一旦配置已被緩存，`.env` 文件將不再被加載，所有對於 `.env` 變量 env 函數的調用將返回 null。
 
-### 優化路由加載 {#optimizing-route-loading}
+<a name="optimizing-route-loading"></a>
+
+### 優化路由加載
 
 如果你正在構建一個包含許多路由的大型應用程序，你應該確保在部署過程中運行 `route:cache` Artisan 命令：
 
@@ -114,7 +133,9 @@ php artisan route:cache
 
 這個命令將所有路由注冊縮減成單個方法調用且放入緩存文件中，提高注冊大量路由時的性能。
 
-### 優化視圖加載 {#optimizing-view-loading}
+<a name="optimizing-view-loading"></a>
+
+### 優化視圖加載
 
 在將應用程序部署到生產環境時，你應該確保在部署過程中運行 `view:cache` Artisan 命令：
 
@@ -124,15 +145,21 @@ php artisan view:cache
 
 這個命令預編譯了所有的 Blade 視圖，使它們不再是按需編譯，因此可以提高返回視圖的每個請求的性能。
 
-## 調試模式 {#debug-mode}
+<a name="debug-mode"></a>
+
+## 調試模式
 
 在 `config/app.php` 配置文件中，調試選項決定了有多少錯誤信息實際上會顯示給用戶。默認情況下，該選項設置為遵守 `APP_DEBUG` 環境變量的值，該值存儲在你的應用程序的 `.env` 文件中。
 
 **在生產環境中，這個值應該永遠是 `false`。如果在生產環境中將 `APP_DEBUG` 變量的值設置為 `true`，則存在將敏感配置值暴露給應用程序最終用戶的風險。**
 
-## 使用 Forge / Vapor 部署 {#deploying-with-forge-or-vapor}
+<a name="deploying-with-forge-or-vapor"></a>
 
-#### Laravel Forge {#laravel-forge}
+## 使用 Forge / Vapor 部署
+
+<a name="laravel-forge"></a>
+
+#### Laravel Forge
 
 如果你還不準備好管理自己的服務器配置，或者對於配置運行一個強大的 Laravel 應用程序所需的各種服務不太熟悉，那麽 [Laravel Forge](https://forge.laravel.com) 是一個非常好的選擇。
 
@@ -141,6 +168,8 @@ Laravel Forge 可以在諸如Linode、AWS 等多種基礎設施服務提供商�
 > **注意**
 > 想獲取 Laravel Forge 完整部署指南嗎？請查看 [Laravel Bootcamp](https://bootcamp.laravel.com/deploying) 和 [Laracasts 上提供的 Forge 視頻系列](https://laracasts.com/series/learn-laravel-forge-2022-edition)。
 
-#### Vapor {#laravel-vapor}
+<a name="laravel-vapor"></a>
+
+#### Vapor
 
 如果你想要一個為 Laravel 調整的完全無服務器、自動擴展的部署平台，請看看 [Laravel Vapor](https://vapor.laravel.com)。Laravel Vapor 是一個由 AWS 提供支持的基於無服務器概念的 Laravel 部署平台。在 Vapor 上啟動你的 Laravel 基礎架構，並愛上無服務器的可擴展簡單性。Laravel Vapor 由 Laravel 的創作者進行了精細調校，以便與框架無縫協作，因此你可以像以前一樣繼續編寫 Laravel 應用程序。

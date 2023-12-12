@@ -15,14 +15,16 @@
    - [將 Laravel 用作全棧框架](#laravel-the-fullstack-framework)
    - [將 Laravel 用作 API 後端](#laravel-the-api-backend)
 
-## 認識 Laravel {#meet-laravel}
+<a name="meet-laravel"></a>
+## 認識 Laravel
 Laravel 是一個 Web 應用框架， 有著表現力強、語法優雅的特點。Web 框架為創建應用提供了一個結構和起點，你只需要專注於創造，我們來為你處理細節。
 
 Laravel 致力於提供出色的開發體驗，同時提供強大的特性，例如完全的依賴注入，富有表現力的數據庫抽象層，隊列和計劃任務，單元和集成測試等等。
 
 無論你是剛剛接觸 PHP 和 Web 框架的新人，亦或是有著多年經驗的老手， Laravel 都是一個可以與你一同成長的框架。我們將幫助你邁出成為 Web 開發者的第一步，或是將你的經驗提高到下一個等級。我們迫不及待的想看看你的作品。
 
-### 為什麽選擇 Laravel? {#why-laravel}
+<a name="why-laravel"></a>
+### 為什麽選擇 Laravel?
 
 有非常多的工具和框架可以被用於構建一個 Web 應用。但我們相信 Laravel 是構建現代化、全棧 Web 應用的最佳選擇。
 
@@ -42,7 +44,7 @@ Laravel 具有難以置信的可擴展性。由於 PHP 的靈活性以及 Larave
 
 Laravel 結合了 PHP 生態系統中最好的軟件包，提供了最健壯、對開發人員友好的框架。此外，來自世界各地的數千名有才華的開發人員 [為框架做出了貢獻](https://github.com/laravel/framework) 。誰知道呢，也許你就是下一個 Laravel 的貢獻者。
 
-## 你的第一個 Laravel 項目 {#your-first-laravel-project}
+## 你的第一個 Laravel 項目
 
 在創建你的第一個Laravel項目之前, 你應該確保你的本地機器上已經安裝了 PHP 和 [Composer](https://getcomposer.org) 。 如果你是在 macOS 上開發， PHP 和 Composer 可以通過 [Homebrew](https://brew.sh/) 來安裝。 此外, 我們建議你 [安裝 Node 和 NPM](https://nodejs.org)。
 
@@ -73,7 +75,8 @@ php artisan serve
 > **技巧**
 > 如果你想在開發Laravel應用程序時領先一步， 可以考慮使用我們的 [入門套件](/docs/laravel/10.x/starter-kits)。 Laravel 的入門套件為你的新 Laravel 應用程序提供後端和前端身份驗證腳手架。
 
-## Laravel & Docker {#laravel-and-docker}
+<a name="laravel-and-docker"></a>
+## Laravel & Docker
 
 我們希望盡可能輕松地開始使用 Laravel，無論你喜歡哪種操作系統。因此，在本地計算機上開發和運行 Laravel 項目有多種選擇。雖然你可能希望稍後探索這些選項，但 Laravel 提供了 [Sail](/docs/laravel/10.x/sail)，這是一個使用 [Docker](https://www.docker.com) 運行 Laravel 項目的內置解決方案。
 
@@ -84,7 +87,8 @@ Laravel Sail 是一個輕量級的命令行界面，用於與 Laravel 的默認 
 > **技巧**
 > 已經是 Docker 專家？別擔心！關於 Sail 的一切都可以使用 Laravel 附帶的文件 `docker-compose.yml` 進行自定義。
 
-### macOS 入門 {#getting-started-on-macos}
+<a name="getting-started-on-macos"></a>
+### macOS 入門
 
 如果你在 Mac 上開發並且已經安裝了 [Docker Desktop](https://www.docker.com/products/docker-desktop)，你可以使用一個簡單的終端命令來創建一個新的 Laravel 項目。 例如，要在名為「example-app」的目錄中創建一個新的 Laravel 應用程序，你可以在終端中運行以下命令：
 
@@ -109,7 +113,8 @@ cd example-app
 > **技巧**
 > 要繼續了解有關 Laravel Sail 的更多信息，請查看其 [完整文檔](/docs/laravel/10.x/sail)。
 
-### Windows 入門 {#getting-started-on-windows}
+<a name="getting-started-on-windows"></a>
+### Windows 入門
 
 在創建 Laravel 應用前，請確保你的 Windows 電腦已經安裝了 [Docker Desktop](https://www.docker.com/products/docker-desktop)。請確保已經安裝並啟用了適用於 Linux 的 Windows 子系統 2（WSL2），WSL 允許你在 Windows10 上運行 Linux 二進制文件。關於如何安裝並啟用 WSL2，請參閱微軟 [開發者環境文檔](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
@@ -145,7 +150,8 @@ cd example-app
 
 一旦這些工具成功安裝，你可以使用 Windows Terminal 在應用根目錄執行 `code .` 命令來打開任何 Laravel 項目。
 
-### 在 Linux 使用 Laravel Sail {#getting-started-on-linux}
+<a name="getting-started-on-linux"></a>
+### 在 Linux 使用 Laravel Sail
 
 如果在 Linux 開發，並且已經安裝了 [Docker Compose](https://docs.docker.com/compose/install/) 你可以使用簡單的終端命令來創建一個新的 Laravel 項目。例如，要在「example-app」目錄中創建新的 Laravel 應用，你可以在終端中運行如下命令：
 
@@ -169,7 +175,8 @@ cd example-app
 > **技巧**
 > 要繼續學習更多關於 Laravel Sail 的知識，請參閱 [ 詳細文檔](/docs/laravel/10.x/sail)。
 
-### 選擇 Sail 服務 {#choosing-your-sail-services}
+<a name="choosing-your-sail-services"></a>
+### 選擇 Sail 服務
 
 通過 Sail 創建 Laravel 程序時，可以使用 `with` 查詢字符串變量來選擇程序的 `docker-compose.yml` 文件配置哪些服務。可用的服務包括 `mysql`, `pgsql`, `mariadb`, `redis`, `memcached`, `meilisearch`, `minio`, `selenium`, 和 `mailpit`:
 
@@ -185,13 +192,15 @@ curl -s "https://laravel.build/example-app?with=mysql,redis" | bash
 curl -s "https://laravel.build/example-app?with=mysql,redis&devcontainer" | bash
 ```
 
-## 安裝配置 {#initial-configuration}
+<a name="initial-configuration"></a>
+## 安裝配置
 
 Laravel 框架將所有的配置文件都放在 `config` 目錄中。每個選項都有一個文件，因此可以瀏覽文件並熟悉可用的選項。
 
 Laravel 開箱可用，不需要額外配置，你可以自由的開發！然而，你可能希望查看 `config/app.php` 文件及其文檔。它包含幾個選項，例如你可能希望根據程序更改 `timezone` 和 `locale`。
 
-### 環境配置 {#environment-based-configuration}
+<a name="environment-based-configuration"></a>
+### 環境配置
 
 Laravel 的許多配置選項值可能會根據運行的環境有所不同，因此許多重要的配置選項值是在 `.env` 文件中定義的。
 
@@ -200,7 +209,8 @@ Laravel 的許多配置選項值可能會根據運行的環境有所不同，因
 > **注意**
 > 若要了解更多關於 `.env` 文件和基於環境的配置的信息，請查看完整的 [配置文檔](/docs/laravel/10.x/configurationmd#environment-configuration)。
 
-### 數據庫和遷移 {#databases-and-migrations}
+<a name="databases-and-migrations"></a>
+### 數據庫和遷移
 
 現在，你已經創建了 Laravel 應用程序，可能想在數據庫中存儲一些數據。默認情況下，你的應用程序的 `.env` 配置文件指定 Laravel 將與 MySQL 數據庫交互，並訪問 `127.0.0.1` 中的數據庫。如果你在 macOS 上開發並需要在本地安裝 MySQL、Postgres 或 Redis，則可能會發現使用 [DBngin](https://dbngin.com/) 非常方便。
 
@@ -228,25 +238,29 @@ DB_PASSWORD= # [tl! remove]
 php artisan migrate
 ```
 
-## 下一步 {#next-steps}
+<a name="next-steps"></a>
+## 下一步
 
 現在你已經創建了你的 Laravel 項目，你可能在想下一步該學什麽。首先，我們強烈建議通過閱讀以下文檔來了解 Laravel 的工作方式：
 
+<div class="content-list" markdown="1">
 
--   [請求生命周期](/docs/laravel/10.x/lifecycle)
-  -   [配置](/docs/laravel/10.x/configuration)
-  -   [目錄結構](/docs/laravel/10.x/structure)
-  -   [前端](/docs/laravel/10.x/frontend)
-  -   [服務容器](/docs/laravel/10.x/container)
-  -   [門面](/docs/laravel/10.x/facades)
+  -   [請求生命周期](/docs/laravel/10.x/lifecycle)
+    -   [配置](/docs/laravel/10.x/configuration)
+    -   [目錄結構](/docs/laravel/10.x/structure)
+    -   [前端](/docs/laravel/10.x/frontend)
+    -   [服務容器](/docs/laravel/10.x/container)
+    -   [門面](/docs/laravel/10.x/facades)
 
+</div>
 
 你如何使用 Laravel 也會決定你的下一步。Laravel 有多種使用方式，下面我們將探索框架的兩個主要用例。
 
 > **注意**
 > 是第一次使用 Laravel 嗎？請查看 [Laravel Bootcamp](https://bootcamp.laravel.com) 可讓你實際操作 Laravel 框架並帶你構建第一個 Laravel 應用程序。
 
-### Laravel 全棧框架 {#laravel-the-fullstack-framework}
+<a name="laravel-the-fullstack-framework"></a>
+### Laravel 全棧框架
 
 Laravel 可以作為一個全棧框架。全棧框架意味著你將使用 Laravel 將請求路由到你的應用程序，並通過 [Blade 模板](/docs/laravel/10.x/blade) 或像 [Inertia](https://inertiajs.com) 這樣的單頁應用混合技術來渲染你的前端。這是使用 Laravel 框架最常見的方式，在我們看來，這也是使用 Laravel 最高效的方式。
 
@@ -256,7 +270,8 @@ Laravel 可以作為一個全棧框架。全棧框架意味著你將使用 Larav
 
 > 技巧：如果你想盡快構建你的應用程序，請查看我們的官方 [應用程序入門工具包](/docs/laravel/10.x/starter-kits)。
 
-### Laravel API 後端 {#laravel-the-api-backend}
+<a name="laravel-the-api-backend"></a>
+### Laravel API 後端
 
 Laravel 也可以作為 JavaScript 單頁應用程序或移動應用程序的 API 後端。例如，你可以使用 Laravel 作為 [Next.js](https://nextjs.org) 應用程序的 API 後端。在這種情況下，你可以使用 Laravel 為你的應用程序提供 [身份驗證](/docs/laravel/10.x/sanctum) 和數據存儲/檢索，同時還可以利用 Laravel 的強大服務，例如隊列、電子郵件、通知等。
 
