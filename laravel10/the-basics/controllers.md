@@ -298,7 +298,7 @@ Laravel 的 [隱式模型綁定](/docs/laravel/10.x/routing#implicit-model-bindi
 
 上面的路由定義方式會定義以下路由：
 
-|請求方式       | 請求URI                               | 行為       | 路由名稱
+請求方式       | 請求URI                               | 行為       | 路由名稱
 ----------|-----------------------------------|--------------|---------------------
 GET       | `/photos/{photo}/comments`        | index        | photos.comments.index
 GET       | `/photos/{photo}/comments/create` | create       | photos.comments.create
@@ -405,7 +405,7 @@ Route::singleton('profile', ProfileController::class);
 
 上例中定義的單例資源會注冊如下所示的路由。如你所見，單例資源中「新建」路由沒有被注冊；並且注冊的路由不接收路由參數，因為該資源中只有一個實例存在：
 
-|請求方式      | 請求 URI                               | 行為       | 路由名稱
+請求方式      | 請求 URI                               | 行為       | 路由名稱
 ----------|-----------------------------------|--------------|---------------------
 GET       | `/profile`                        | show         | profile.show
 GET       | `/profile/edit`                   | edit         | profile.edit

@@ -101,7 +101,7 @@
 <a name="the-app-directory"></a>
 ## App 目錄
 
-你的大部分應用程序都位於 `app` 目錄中。默認情況下，此目錄在 `App` 下命名，並由 Composer 使用 [PSR-4 自動加載標準] ([www.php-fig.org/psr/psr-4/](https://www.php-fig.org/psr/psr-4/)) 自動加載。
+你的大部分應用程序都位於 `app` 目錄中。默認情況下，此目錄在 `App` 下命名，並由 Composer 使用 [PSR-4 自動加載標準](https://www.php-fig.org/psr/psr-4/) 自動加載。
 
 `app` 目錄包含各種附加目錄，例如 `Console`、`Http` 和 `Providers`。將 `Console` 和 `Http` 目錄視為為應用程序核心提供 API。 HTTP 協議和 CLI 都是與應用程序交互的機制，但實際上並不包含應用程序邏輯。換句話說，它們是向你的應用程序發出命令的兩種方式。 `Console` 目錄包含你的所有 Artisan 命令，而 `Http` 目錄包含你的控制器、中間件和請求。
 
