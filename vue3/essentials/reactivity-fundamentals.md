@@ -9,7 +9,7 @@
 
 選用選項式 API 時，會用 `data` 選項來聲明組件的響應式狀態。此選項的值應為返回一個對象的函數。Vue 將在創建新組件實例的時候調用此函數，並將函數返回的對象用響應式系統進行包裝。此對象的所有頂層屬性都會被代理到組件實例 (即方法和生命周期鉤子中的 `this`) 上。
 
-```js{2-6}
+```js
 export default {
   data() {
     return {
@@ -90,7 +90,7 @@ console.log(count.value) // 1
 
 要在組件模板中訪問 ref，請從組件的 `setup()` 函數中聲明並返回它們：
 
-```js{5,9-11}
+```js
 import { ref } from 'vue'
 
 export default {
@@ -122,7 +122,7 @@ export default {
 
 對於更覆雜的邏輯，我們可以在同一作用域內聲明更改 ref 的函數，並將它們作為方法與狀態一起公開：
 
-```js{7-10,15}
+```js
 import { ref } from 'vue'
 
 export default {
@@ -221,7 +221,7 @@ const myRef = {
 
 要為組件添加方法，我們需要用到 `methods` 選項。它應該是一個包含所有方法的對象：
 
-```js{7-11}
+```js
 export default {
   data() {
     return {

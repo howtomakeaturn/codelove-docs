@@ -308,7 +308,7 @@ const posts = ref([
 
 <div class="options-api" markdown="1">
 
-```js{6}
+```js
 data() {
   return {
     posts: [
@@ -322,7 +322,7 @@ data() {
 </div>
 <div class="composition-api" markdown="1">
 
-```js{5}
+```js
 const posts = ref([
   /* ... */
 ])

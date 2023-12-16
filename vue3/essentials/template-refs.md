@@ -34,7 +34,7 @@ onMounted(() => {
 
 如果不使用 `<script setup>`，需確保從 `setup()` 返回 ref：
 
-```js{6}
+```js
 export default {
   setup() {
     const input = ref(null)
