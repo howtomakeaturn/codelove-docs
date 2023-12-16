@@ -12,7 +12,7 @@ Vue (發音為 /vjuː/，類似 **view**) 是一款用於構建用戶界面的 J
 
 下面是一個最基本的示例：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 import { createApp } from 'vue'
@@ -26,7 +26,8 @@ createApp({
 }).mount('#app')
 ```
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js
 import { createApp, ref } from 'vue'
@@ -39,6 +40,8 @@ createApp({
   }
 }).mount('#app')
 ```
+
+</div>
 
 ```vue-html
 <div id="app">
@@ -58,6 +61,7 @@ createApp({
 
 > 預備知識
 > 文檔接下來的內容會假設你對 HTML、CSS 和 JavaScript 已經基本熟悉。如果你對前端開發完全陌生，最好不要直接從一個框架開始進行入門學習——最好是掌握了基礎知識再回到這里。你可以通過這篇 [JavaScript 概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)來檢驗你的 JavaScript 知識水平。如果之前有其他框架的經驗會很有幫助，但也不是必須的。
+
 
 ## 漸進式框架 {#the-progressive-framework}
 
@@ -80,7 +84,7 @@ Vue 是一個框架，也是一個生態。其功能覆蓋了大部分前端開�
 
 在大多數啟用了構建工具的 Vue 項目中，我們可以使用一種類似 HTML 格式的文件來書寫 Vue 組件，它被稱為**單文件組件** (也被稱為 `*.vue` 文件，英文 Single-File Components，縮寫為 **SFC**)。顧名思義，Vue 的單文件組件會將一個組件的邏輯 (JavaScript)，模板 (HTML) 和樣式 (CSS) 封裝在同一個文件里。下面我們將用單文件組件的格式重寫上面的計數器示例：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```vue
 <script>
@@ -104,7 +108,8 @@ button {
 </style>
 ```
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -122,6 +127,8 @@ button {
 }
 </style>
 ```
+
+</div>
 
 單文件組件是 Vue 的標志性功能。如果你的用例需要進行構建，我們推薦用它來編寫 Vue 組件。你可以在後續相關章節里了解更多關於[單文件組件的用法及用途](/guide/scaling-up/sfc)。但你暫時只需要知道 Vue 會幫忙處理所有這些構建工具的配置就好。
 

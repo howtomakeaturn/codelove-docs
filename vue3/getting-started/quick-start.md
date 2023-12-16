@@ -11,6 +11,7 @@
 ## 創建一個 Vue 應用 {#creating-a-vue-application}
 
 > 前提條件
+
 > - 熟悉命令行
 > - 已安裝 16.0 或更高版本的 [Node.js](https://nodejs.org/)
 
@@ -74,7 +75,7 @@
 
 上面的鏈接使用了*全局構建版本*的 Vue，該版本的所有頂層 API 都以屬性的形式暴露在了全局的 `Vue` 對象上。這里有一個使用全局構建版本的例子：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -96,7 +97,9 @@ options-api
 
 [Codepen 示例](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -119,15 +122,15 @@ composition-api
 
 [Codepen 示例](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
-
 > 本指南中許多關於組合式 API 的例子將使用 `<script setup>` 語法，這需要構建工具。如果你打算在沒有構建步驟的情況下使用組合式 API，請參考 [`setup()` 選項](/api/composition-api-setup)的用法。
 
+</div>
 
 ### 使用 ES 模塊構建版本 {#using-the-es-module-build}
 
 在本文檔的其余部分我們使用的主要是 [ES 模塊](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)語法。現代瀏覽器大多都已原生支持 ES 模塊。因此我們可以像這樣通過 CDN 以及原生 ES 模塊使用 Vue：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```html{3,4}
 <div id="app">{{ message }}</div>
@@ -145,7 +148,9 @@ options-api
 </script>
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```html{3,4}
 <div id="app">{{ message }}</div>
@@ -164,15 +169,20 @@ composition-api
 </script>
 ```
 
+</div>
+
 注意我們使用了 `<script type="module">`，且導入的 CDN URL 指向的是 Vue 的 **ES 模塊構建版本**。
 
-options-api
+<div class="options-api" markdown="1">
 
 [Codepen 示例](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [Codepen 示例](https://codepen.io/vuejs-examples/pen/MWzazEv)
+
+</div>
 
 ### 啟用 Import maps {#enabling-import-maps}
 
@@ -184,7 +194,7 @@ import { createApp } from 'vue'
 
 我們可以使用[導入映射表 (Import Maps)](https://caniuse.com/import-maps) 來告訴瀏覽器如何定位到導入的 `vue`：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```html{1-7,12}
 <script type="importmap">
@@ -212,7 +222,9 @@ options-api
 
 [Codepen 示例](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```html{1-7,12}
 <script type="importmap">
@@ -241,6 +253,8 @@ composition-api
 
 [Codepen demo](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
+</div>
+
 你也可以在映射表中添加其他的依賴——但請務必確保你使用的是該庫的 ES 模塊版本。
 
 > 導入映射表的瀏覽器支持情況
@@ -265,7 +279,7 @@ composition-api
 </script>
 ```
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 // my-component.js
@@ -277,7 +291,8 @@ export default {
 }
 ```
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js
 // my-component.js
@@ -290,6 +305,8 @@ export default {
   template: `<div>count is {{ count }}</div>`
 }
 ```
+
+</div>
 
 如果直接在瀏覽器中打開了上面的 `index.html`，你會發現它拋出了一個錯誤，因為 ES 模塊不能通過 `file://` 協議工作，也即是當你打開一個本地文件時瀏覽器使用的協議。
 
