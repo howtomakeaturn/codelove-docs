@@ -255,6 +255,8 @@ Facades 和輔助函數之間沒有實際的區別。 當你使用輔助函數�
 
 在下面你可以找到每個 facade 類及其對應的底層類。這是一個快速查找給定 facade 類的 API 文檔的工具。[服務容器綁定](/docs/laravel/10.x/container) 的關鍵信息也包含在內。
 
+<div class="overflow-auto" markdown="1">
+
 Facade  |  Class  |  Service Container Binding|
 ------------- | ------------- | -------------|
 App  |  [Illuminate\Foundation\Application](https://laravel.com/api/10.x/Illuminate/Foundation/Application.html)  |  `app`|
@@ -306,3 +308,5 @@ Validator (Instance)  |  [Illuminate\Validation\Validator](https://laravel.com/a
 View  |  [Illuminate\View\Factory](https://laravel.com/api/10.x/Illuminate/View/Factory.html)  |  `view`|
 View (Instance)  |  [Illuminate\View\View](https://laravel.com/api/10.x/Illuminate/View/View.html)  |  &nbsp;|
 Vite  |  [Illuminate\Foundation\Vite](https://laravel.com/api/10.x/Illuminate/Foundation/Vite.html)  |  &nbsp;|
+
+</div>
