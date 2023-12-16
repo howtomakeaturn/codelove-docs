@@ -25,15 +25,6 @@ Vue 使用一種基於 HTML 的模板語法，使我們能夠聲明式地將其�
 <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 ```
 
-<script setup>
-  const rawHtml = '<span style="color: red">This should be red.</span>'
-</script>
-
-<p class="demo">
-  <p>Using text interpolation: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
-</p>
-
 這里我們遇到了一個新的概念。這里看到的 `v-html` attribute 被稱為一個**指令**。指令由 `v-` 作為前綴，表明它們是一些由 Vue 提供的特殊 attribute，你可能已經猜到了，它們將為渲染的 DOM 應用特殊的響應式行為。這里我們做的事情簡單來說就是：在當前組件實例上，將此元素的 innerHTML 與 `rawHtml` 屬性保持同步。
 
 `span` 的內容將會被替換為 `rawHtml` 屬性的值，插值為純 HTML——數據綁定將會被忽略。注意，你不能使用 `v-html` 來拼接組合模板，因為 Vue 不是一個基於字符串的模板引擎。在使用 Vue 時，應當使用組件作為 UI 重用和組合的基本單元。
@@ -79,7 +70,7 @@ Vue 使用一種基於 HTML 的模板語法，使我們能夠聲明式地將其�
 
 如果你有像這樣的一個包含多個 attribute 的 JavaScript 對象：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 const objectOfAttrs = {
@@ -88,7 +79,8 @@ const objectOfAttrs = {
 }
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 data() {
@@ -100,6 +92,8 @@ data() {
   }
 }
 ```
+
+</div>
 
 通過不帶參數的 `v-bind`，你可以將它們綁定到單個元素上：
 
