@@ -4,7 +4,7 @@
 
 ## laravel10 notes
 
-- no.
+- add markdown="1" to html block
 
 ## vue3 notes
 
