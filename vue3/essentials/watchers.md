@@ -4,7 +4,7 @@
 
 計算屬性允許我們聲明性地計算衍生值。然而在有些情況下，我們需要在狀態變化時執行一些“副作用”：例如更改 DOM，或是根據異步操作的結果去修改另一處的狀態。
 
-options-api
+<div class="options-api" markdown="1">
 
 在選項式 API 中，我們可以使用 [`watch` 選項](/api/options-state#watch)在每次響應式屬性發生變化時觸發一個函數。
 
@@ -61,8 +61,9 @@ export default {
 }
 ```
 
+</div>
 
-composition-api
+<div class="composition-api" markdown="1">
 
 在組合式 API 中，我們可以使用 [`watch` 函數](/api/reactivity-core#watch)在每次響應式狀態發生變化時觸發回調函數：
 
@@ -148,9 +149,11 @@ watch(
 )
 ```
 
+</div>
+
 ## 深層偵聽器 {#deep-watchers}
 
-options-api
+<div class="options-api" markdown="1">
 
 `watch` 默認是淺層的：被偵聽的屬性，僅在被賦新值時，才會觸發回調函數——而嵌套屬性的變化不會觸發。如果想偵聽所有嵌套的變更，你需要深層偵聽器：
 
@@ -169,7 +172,9 @@ export default {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 直接給 `watch()` 傳入一個響應式對象，會隱式地創建一個深層偵聽器——該回調函數在所有嵌套的變更時都會被觸發：
 
@@ -209,15 +214,16 @@ watch(
 )
 ```
 
+</div>
+
 > 謹慎使用
 > 深度偵聽需要遍歷被偵聽對象中的所有嵌套的屬性，當用於大型數據結構時，開銷很大。因此請只在必要時才使用它，並且要留意性能。
-
 
 ## 即時回調的偵聽器 {#eager-watchers}
 
 `watch` 默認是懶執行的：僅當數據源變化時，才會執行回調。但在某些場景中，我們希望在創建偵聽器時，立即執行一遍回調。舉例來說，我們想請求一些初始數據，然後在相關狀態更改時重新請求數據。
 
-options-api
+<div class="options-api" markdown="1">
 
 我們可以用一個對象來聲明偵聽器，這個對象有 `handler` 方法和 `immediate: true` 選項，這樣便能強制回調函數立即執行：
 
@@ -239,9 +245,9 @@ export default {
 
 回調函數的初次執行就發生在 `created` 鉤子之前。Vue 此時已經處理了 `data`、`computed` 和 `methods` 選項，所以這些屬性在第一次調用時就是可用的。
 
+</div>
 
-
-composition-api
+<div class="composition-api" markdown="1">
 
 我們可以通過傳入 `immediate: true` 選項來強制偵聽器的回調立即執行：
 
@@ -251,8 +257,9 @@ watch(source, (newValue, oldValue) => {
 }, { immediate: true })
 ```
 
+</div>
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ## `watchEffect()` \*\* {#watcheffect}
 
@@ -289,9 +296,7 @@ watchEffect(async () => {
 
 對於這種只有一個依賴項的例子來說，`watchEffect()` 的好處相對較小。但是對於有多個依賴項的偵聽器來說，使用 `watchEffect()` 可以消除手動維護依賴列表的負擔。此外，如果你需要偵聽一個嵌套數據結構中的幾個屬性，`watchEffect()` 可能會比深度偵聽器更有效，因為它將只跟蹤回調中被使用到的屬性，而不是遞歸地跟蹤所有的屬性。
 
-
 > `watchEffect` 僅會在其**同步**執行期間，才追蹤依賴。在使用異步回調時，只有在第一個 `await` 正常工作前訪問到的屬性才會被追蹤。
-
 
 ### `watch` vs. `watchEffect` {#watch-vs-watcheffect}
 
@@ -301,7 +306,7 @@ watchEffect(async () => {
 
 - `watchEffect`，則會在副作用發生期間追蹤依賴。它會在同步執行過程中，自動追蹤所有能訪問到的響應式屬性。這更方便，而且代碼往往更簡潔，但有時其響應性依賴關系會不那麽明確。
 
-
+</div>
 
 ## 回調的觸發時機 {#callback-flush-timing}
 
@@ -311,7 +316,7 @@ watchEffect(async () => {
 
 如果想在偵聽器回調中能訪問被 Vue 更新**之後**的 DOM，你需要指明 `flush: 'post'` 選項：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -325,7 +330,9 @@ export default {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```js
 watch(source, callback, {
@@ -347,7 +354,9 @@ watchPostEffect(() => {
 })
 ```
 
-options-api
+</div>
+
+<div class="options-api" markdown="1">
 
 ## `this.$watch()` \* {#this-watch}
 
@@ -365,10 +374,11 @@ export default {
 
 如果要在特定條件下設置一個偵聽器，或者只偵聽響應用戶交互的內容，這方法很有用。它還允許你提前停止該偵聽器。
 
+</div>
 
 ## 停止偵聽器 {#stopping-a-watcher}
 
-options-api
+<div class="options-api" markdown="1">
 
 用 `watch` 選項或者 `$watch()` 實例方法聲明的偵聽器，會在宿主組件卸載時自動停止。因此，在大多數場景下，你無需關心怎麽停止它。
 
@@ -381,8 +391,9 @@ const unwatch = this.$watch('foo', callback)
 unwatch()
 ```
 
+</div>
 
-composition-api
+<div class="composition-api" markdown="1">
 
 在 `setup()` 或 `<script setup>` 中用同步語句創建的偵聽器，會自動綁定到宿主組件實例上，並且會在宿主組件卸載時自動停止。因此，在大多數情況下，你無需關心怎麽停止一個偵聽器。
 
@@ -423,5 +434,7 @@ watchEffect(() => {
   }
 })
 ```
+
+</div>
 
 <!-- zhlint disabled -->

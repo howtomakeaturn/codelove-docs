@@ -4,9 +4,9 @@
 
 ## 注冊周期鉤子 {#registering-lifecycle-hooks}
 
-舉例來說，<span class="composition-api">`onMounted`</span><span class="options-api">`mounted`</span> 鉤子可以用來在組件完成初始渲染並創建 DOM 節點後運行代碼：
+舉例來說，<span class="composition-api" markdown="1">`onMounted`</span><span class="options-api" markdown="1">`mounted`</span> 鉤子可以用來在組件完成初始渲染並創建 DOM 節點後運行代碼：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -18,8 +18,8 @@ onMounted(() => {
 </script>
 ```
 
-
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -29,14 +29,17 @@ export default {
 }
 ```
 
+</div>
 
-還有其他一些鉤子，會在實例生命周期的不同階段被調用，最常用的是 <span class="composition-api">[`onMounted`](/api/composition-api-lifecycle#onmounted)、[`onUpdated`](/api/composition-api-lifecycle#onupdated) 和 [`onUnmounted`](/api/composition-api-lifecycle#onunmounted)。所有生命周期鉤子的完整參考及其用法請參考 [API 索引](/api/composition-api-lifecycle.html)。</span><span class="options-api">[`mounted`](/api/options-lifecycle#mounted)、[`updated`](/api/options-lifecycle#updated) 和 [`unmounted`](/api/options-lifecycle#unmounted)。</span>
+還有其他一些鉤子，會在實例生命周期的不同階段被調用，最常用的是 <span class="composition-api" markdown="1">[`onMounted`](/api/composition-api-lifecycle#onmounted)、[`onUpdated`](/api/composition-api-lifecycle#onupdated) 和 [`onUnmounted`](/api/composition-api-lifecycle#onunmounted)。所有生命周期鉤子的完整參考及其用法請參考 [API 索引](/api/composition-api-lifecycle.html)。</span><span class="options-api" markdown="1">[`mounted`](/api/options-lifecycle#mounted)、[`updated`](/api/options-lifecycle#updated) 和 [`unmounted`](/api/options-lifecycle#unmounted)。</span>
 
-options-api
+<div class="options-api" markdown="1">
 
 所有生命周期鉤子函數的 `this` 上下文都會自動指向當前調用它的組件實例。注意：避免用箭頭函數來定義生命周期鉤子，因為如果這樣的話你將無法在函數中通過 `this` 獲取組件實例。
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 當調用 `onMounted` 時，Vue 會自動將回調函數注冊到當前正被初始化的組件實例上。這意味著這些鉤子應當在組件初始化時被**同步**注冊。例如，請不要這樣做：
 
@@ -51,7 +54,7 @@ setTimeout(() => {
 
 注意這並不意味著對 `onMounted` 的調用必須放在 `setup()` 或 `<script setup>` 內的詞法上下文中。`onMounted()` 也可以在一個外部函數中調用，只要調用棧是同步的，且最終起源自 `setup()` 就可以。
 
-
+</div>
 
 ## 生命周期圖示 {#lifecycle-diagram}
 
@@ -61,4 +64,4 @@ setTimeout(() => {
 
 <!-- https://www.figma.com/file/Xw3UeNMOralY6NV7gSjWdS/Vue-Lifecycle -->
 
-有關所有生命周期鉤子及其各自用例的詳細信息，請參考<span class="composition-api">[生命周期鉤子 API 索引](/api/composition-api-lifecycle)</span><span class="options-api">[生命周期鉤子 API 索引](/api/options-lifecycle)</span>。
+有關所有生命周期鉤子及其各自用例的詳細信息，請參考<span class="composition-api" markdown="1">[生命周期鉤子 API 索引](/api/composition-api-lifecycle)</span><span class="options-api" markdown="1">[生命周期鉤子 API 索引](/api/options-lifecycle)</span>。
