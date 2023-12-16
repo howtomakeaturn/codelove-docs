@@ -4,7 +4,7 @@
 
 模板中的表達式雖然方便，但也只能用來做簡單的操作。如果在模板中寫太多邏輯，會讓模板變得臃腫，難以維護。比如說，我們有這樣一個包含嵌套數組的對象：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -23,7 +23,8 @@ export default {
 }
 ```
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js
 const author = reactive({
@@ -36,6 +37,8 @@ const author = reactive({
 })
 ```
 
+</div>
+
 我們想根據 `author` 是否已有一些書籍來展示不同的信息：
 
 ```vue-html
@@ -47,7 +50,7 @@ const author = reactive({
 
 因此我們推薦使用**計算屬性**來描述依賴響應式狀態的覆雜邏輯。這是重構後的示例：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -88,7 +91,9 @@ export default {
 
 也可參考：[為計算屬性標記類型](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -123,6 +128,8 @@ Vue 的計算屬性會自動追蹤響應式依賴。它會檢測到 `publishedBo
 
 也可參考：[為計算屬性標注類型](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
+</div>
+
 ## 計算屬性緩存 vs 方法 {#computed-caching-vs-methods}
 
 你可能注意到我們在表達式中像這樣調用一個函數也會獲得和計算屬性相同的結果：
@@ -131,7 +138,7 @@ Vue 的計算屬性會自動追蹤響應式依賴。它會檢測到 `publishedBo
 <p>{{ calculateBooksMessage() }}</p>
 ```
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 // 組件中
@@ -142,7 +149,9 @@ methods: {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```js
 // 組件中
@@ -151,11 +160,13 @@ function calculateBooksMessage() {
 }
 ```
 
+</div>
+
 若我們將同樣的函數定義為一個方法而不是計算屬性，兩種方式在結果上確實是完全相同的，然而，不同之處在於**計算屬性值會基於其響應式依賴被緩存**。一個計算屬性僅會在其響應式依賴更新時才重新計算。這意味著只要 `author.books` 不改變，無論多少次訪問 `publishedBooksMessage` 都會立即返回先前的計算結果，而不用重覆執行 getter 函數。
 
-這也解釋了為什麼下面的計算屬性永遠不會更新，因為 `Date.now()` 並不是一個響應式依賴：
+這也解釋了為什麽下面的計算屬性永遠不會更新，因為 `Date.now()` 並不是一個響應式依賴：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 computed: {
@@ -165,21 +176,25 @@ computed: {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```js
 const now = computed(() => Date.now())
 ```
 
+</div>
+
 相比之下，方法調用**總是**會在重渲染發生時再次執行函數。
 
-為什麼需要緩存呢？想象一下我們有一個非常耗性能的計算屬性 `list`，需要循環一個巨大的數組並做許多計算邏輯，並且可能也有其他計算屬性依賴於 `list`。沒有緩存的話，我們會重覆執行非常多次 `list` 的 getter，然而這實際上沒有必要！如果你確定不需要緩存，那麼也可以使用方法調用。
+為什麽需要緩存呢？想象一下我們有一個非常耗性能的計算屬性 `list`，需要循環一個巨大的數組並做許多計算邏輯，並且可能也有其他計算屬性依賴於 `list`。沒有緩存的話，我們會重覆執行非常多次 `list` 的 getter，然而這實際上沒有必要！如果你確定不需要緩存，那麽也可以使用方法調用。
 
 ## 可寫計算屬性 {#writable-computed}
 
 計算屬性默認是只讀的。當你嘗試修改一個計算屬性時，你會收到一個運行時警告。只在某些特殊場景中你可能才需要用到“可寫”的屬性，你可以通過同時提供 getter 和 setter 來創建：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -207,7 +222,9 @@ export default {
 
 現在當你再運行 `this.fullName = 'John Doe'` 時，setter 會被調用而 `this.firstName` 和 `this.lastName` 會隨之更新。
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -231,6 +248,8 @@ const fullName = computed({
 ```
 
 現在當你再運行 `fullName.value = 'John Doe'` 時，setter 會被調用而 `firstName` 和 `lastName` 會隨之更新。
+
+</div>
 
 ## 最佳實踐 {#best-practices}
 
