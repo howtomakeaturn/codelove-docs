@@ -1,9 +1,9 @@
 # 響應式基礎 {#reactivity-fundamentals}
 
 > API 參考
-> 本頁和後面很多頁面中都分別包含了選項式 API 和組合式 API 的示例代碼。
+> 本頁和後面很多頁面中都分別包含了選項式 API 和組合式 API 的示例代碼。現在你選擇的是 <span class="options-api" markdown="1">選項式 API</span><span class="composition-api" markdown="1">組合式 API</span>。你可以使用左側側邊欄頂部的 “API 風格偏好” 開關在 API 風格之間切換。
 
-options-api
+<div class="options-api" markdown="1">
 
 ## 聲明響應式狀態 \* {#declaring-reactive-state}
 
@@ -58,7 +58,9 @@ export default {
 
 當你在賦值後再訪問 `this.someObject`，此值已經是原來的 `newObject` 的一個響應式代理。**與 Vue 2 不同的是，這里原始的 `newObject` 不會變為響應式：請確保始終通過 `this` 來訪問響應式狀態。**
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ## 聲明響應式狀態 \*\* {#declaring-reactive-state-1}
 
@@ -209,8 +211,9 @@ const myRef = {
 另一個 ref 的好處是，與普通變量不同，你可以將 ref 傳遞給函數，同時保留對最新值和響應式連接的訪問。當將覆雜的邏輯重構為可重用的代碼時，這將非常有用。
 
 該響應性系統在[深入響應式原理](/guide/extras/reactivity-in-depth)章節中有更詳細的討論。
+</div>
 
-options-api
+<div class="options-api" markdown="1">
 
 ## 聲明方法 \* {#declaring-methods}
 
@@ -259,9 +262,11 @@ export default {
 
 在上面的例子中，`increment` 方法會在 `<button>` 被點擊時調用。
 
+</div>
+
 ### 深層響應性 {#deep-reactivity}
 
-options-api
+<div class="options-api" markdown="1">
 
 在 Vue 中，默認情況下，狀態是深度響應的。這意味著當改變嵌套對象或數組時，這些變化也會被檢測到：
 
@@ -285,7 +290,9 @@ export default {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 Ref 可以持有任何類型的值，包括深層嵌套的對象、數組或者 JavaScript 內置的數據結構，比如 `Map`。
 
@@ -315,13 +322,15 @@ function mutateDeeply() {
 - [減少大型不可變數據的響應性開銷](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
 - [與外部狀態系統集成](/guide/extras/reactivity-in-depth#integration-with-external-state-systems)
 
+</div>
+
 ### DOM 更新時機 {#dom-update-timing}
 
 當你修改了響應式狀態時，DOM 會被自動更新。但是需要注意的是，DOM 更新不是同步的。Vue 會在“next tick”更新周期中緩沖所有狀態的修改，以確保不管你進行了多少次狀態修改，每個組件都只會被更新一次。
 
 要等待 DOM 更新完成後再執行額外的代碼，可以使用 [nextTick()](/api/general#nexttick) 全局 API：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 import { nextTick } from 'vue'
@@ -333,7 +342,8 @@ async function increment() {
 }
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 import { nextTick } from 'vue'
@@ -349,7 +359,9 @@ export default {
 }
 ```
 
-composition-api
+</div>
+
+<div class="composition-api" markdown="1">
 
 ## `reactive()` \*\* {#reactive}
 
@@ -532,7 +544,9 @@ const { id } = object
 
 該特性僅僅是文本插值的一個便利特性，等價於 <code v-pre>{{ object.id.value }}</code>。
 
-options-api
+</div>
+
+<div class="options-api" markdown="1">
 
 ### 有狀態方法 \* {#stateful-methods}
 
@@ -573,3 +587,5 @@ export default {
   }
 }
 ```
+
+</div>
