@@ -47,6 +47,8 @@ Laravel 日志基於「 通道 」。 每個通道代表一種寫入日志信息
 
 每個日志頻道都由一個“驅動程序”驅動。驅動程序確定實際記錄日志消息的方式和位置。以下日志頻道驅動程序在每個 Laravel 應用程序中都可用。大多數這些驅動程序的條目已經在應用程序的 `config/logging.php` 配置文件中存在，因此請務必查看此文件以熟悉其內容：
 
+<div class="overflow-auto" markdown="1">
+
 | 名稱 | 描述 |
 | --- | --- |
 | `custom` | 調用指定工廠創建頻道的驅動程序 |
@@ -60,6 +62,8 @@ Laravel 日志基於「 通道 」。 每個通道代表一種寫入日志信息
 | `stack` | 包裝器，用於方便地創建“多通道”頻道 |
 | `syslog` | 基於 `SyslogHandler` 的 Monolog 驅動程序 |
 
+</div>
+
 > **注意**
 > 查看 [高級頻道自定義](/chat#monolog-channel-customization) 文檔，了解有關 `monolog` 和 `custom` 驅動程序的更多信息。
 
@@ -70,18 +74,21 @@ Laravel 日志基於「 通道 」。 每個通道代表一種寫入日志信息
 
 在處理消息時，`single`和 `daily` 頻道有三個可選配置選項：`bubble`，`permission` 和`locking`。
 
+<div class="overflow-auto" markdown="1">
+
 | 名稱 | 描述 | 默認值 |
 | --- | --- | --- |
 | `bubble` | 表示是否在處理後將消息傳遞到其他頻道 | `true` |
 | `locking` | 在寫入日志文件之前嘗試鎖定日志文件 | `false` |
-| `permission` | 日志文件的權限 | `0644` |
+| `permission` | 日志文件的權限 | `0644` |</div>
 
 另外，可以通過 `days` 選項配置 `daily` 頻道的保留策略：
 
+<div class="overflow-auto" markdown="1">
 
 | 名稱 | 描述 | 默認值 |
 | --- | --- | --- |
-| `days` | 保留每日日志文件的天數 | `7` |
+| `days` | 保留每日日志文件的天數 | `7` |</div>
 
 #### 配置 Papertrail 頻道
 

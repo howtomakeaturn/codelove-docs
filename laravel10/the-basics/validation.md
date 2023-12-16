@@ -837,7 +837,12 @@ The credit card number field is required when payment type is credit card.
 
 <style>
     .collection-method-list > p {
-        columns: 10.8em 3; -moz-columns: 10.8em 3; -webkit-columns: 10.8em 3;
+        column-count: 3;
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-gap: 2em;
+        -moz-column-gap: 2em;
+        -webkit-column-gap: 2em;
     }
 
     .collection-method-list a {
