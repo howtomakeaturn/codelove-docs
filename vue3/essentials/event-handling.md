@@ -14,13 +14,14 @@
 
 內聯事件處理器通常用於簡單場景，例如：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 const count = ref(0)
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 data() {
@@ -30,18 +31,23 @@ data() {
 }
 ```
 
+</div>
+
 ```vue-html
 <button @click="count++">Add 1</button>
 <p>Count is: {{ count }}</p>
 ```
 
-composition-api
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNo9jssKgzAURH/lko0tgrbbEqX+Q5fZaLxiqHmQ3LgJ+fdqFZcD58xMYp1z1RqRvRgP0itHEJCia4VR2llPkMDjBBkmbzUUG1oII4y0JhBIGw2hh2Znbo+7MLw+WjZ/C4TaLT3hnogPkcgaeMtFyW8j2GmXpWBtN47w5PWBHLhrPzPCKfWDXRHmPsCAaOBfgSOkdH3IGUhpDBWv9/e8vsZZ/gFFhFJN)
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNo9jcEKgzAQRH9lyKlF0PYqqdR/6DGXaLYo1RjiRgrivzepIizLzu7sm1XUzuVLIFEKObe+d1wpS183eYahtw4DY1UWMJr15ZpmxYAnDt7uF0BxOwXL5Evc0kbxlmyxxZLFyY2CaXSDZkqKZROYJ4tnO/Tt56HEgckyJaraGNxlsVt2u6teHeF40s20EDo9oyGy+CPIYF1xULBt4H6kOZeFiwBZnOFi+wH0B1hk)
+
+</div>
 
 ## 方法事件處理器 {#method-handlers}
 
@@ -49,7 +55,7 @@ options-api
 
 舉例來說：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 const name = ref('Vue.js')
@@ -63,7 +69,8 @@ function greet(event) {
 }
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 data() {
@@ -83,29 +90,36 @@ methods: {
 }
 ```
 
+</div>
+
 ```vue-html
 <!-- `greet` 是上面定義過的方法名 -->
 <button @click="greet">Greet</button>
 ```
 
-composition-api
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpVj0FLxDAQhf/KMwjtXtq7dBcFQS/qzVMOrWFao2kSkkkvpf/dJIuCEBgm771vZnbx4H23JRJ3YogqaM+IxMlfpNWrd4GxI9CMA3NwK5psbaSVVjkbGXZaCediaJv3RN1XbE5FnZNVrJ3FEoi4pY0sn7BLC0yGArfjMxnjcLsXQrdNJtFxM+Ys0PcYa2CEjuBPylNYb4THtxdUobj0jH/YX3D963gKC5WyvGZ+xR7S5jf01yPzeblhWr2ZmErHw0dizivfK6PV91mKursUl6dSh/4qZ+vQ/+XE8QODonDi)
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNplUE1LxDAQ/StjEbYL0t5LXRQEvag3Tz00prNtNE1CMilC6X83SUkRhJDJfLz3Jm8tHo2pFo9FU7SOW2Ho0in8MdoSDHhlXhKsnQIYGLHyvL8BLJK3KmcAis3YwOnDY/XlTnt1i2G7i/eMNOnBNRkwWkQqcUFFByVAXUNPk3A9COXEgBkGRgtFDkgDTQjcWxuAwDiJBeMsMcUxszCJlsr+BaXUcLtGwiqut930579KST1IBd5Aqlgie3p/hdTIk+IK//bMGqleEbMjxjC+BZVDIv0+m9CpcNr6MDgkhLORjDBm1H56Iq3ggUvBv++7IhnUFZfnGNt6b4fRtj5wxfYL9p+Sjw==)
 
+</div>
+
 方法事件處理器會自動接收原生 DOM 事件並觸發執行。在上面的例子中，我們能夠通過被觸發事件的 `event.target.tagName` 訪問到該 DOM 元素。
 
-composition-api
+<div class="composition-api" markdown="1">
 
 你也可以看看[為事件處理器標注類型](/guide/typescript/composition-api#typing-event-handlers)這一章了解更多。<sup class="vt-badge ts" />
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 你也可以看看[為事件處理器標注類型](/guide/typescript/options-api#typing-event-handlers)這一章了解更多。<sup class="vt-badge ts" />
 
+</div>
 
 ### 方法與內聯事件判斷 {#method-vs-inline-detection}
 
@@ -115,7 +129,7 @@ options-api
 
 除了直接綁定方法名，你還可以在內聯事件處理器中調用方法。這允許我們向方法傳入自定義參數以代替原生事件：
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 function say(message) {
@@ -123,7 +137,8 @@ function say(message) {
 }
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 methods: {
@@ -133,19 +148,23 @@ methods: {
 }
 ```
 
+</div>
+
 ```vue-html
 <button @click="say('hello')">Say hello</button>
 <button @click="say('bye')">Say bye</button>
 ```
 
-composition-api
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNp9jTEOwjAMRa8SeSld6I5CBWdg9ZJGBiJSN2ocpKjq3UmpFDGx+Vn//b/ANYTjOxGcQEc7uyAqkqTQI98TW3ETq2jyYaQYzYNatSArZTzNUn/IK7Ludr2IBYTG4I3QRqKHJFJ6LtY7+zojbIXNk7yfmhahv5msvqS7PfnHGjJVp9w/hu7qKKwfEd1NSg==)
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNptjUEKwjAQRa8yZFO7sfsSi57B7WzGdjTBtA3NVC2ldzehEFwIw8D7vM9f1cX742tmVSsd2sl6aXDgjx8ngY7vNDuBFQeAnsWMXagToQAEWg49h0APLncDAIUcT5LzlKJsqRBfPF3ljQjCvXcknEj0bRYZBzi3zrbPE6o0UBhblKiaKy1grK52J/oA//23IcmNBD8dXeVBtX0BF0pXsg==)
 
+</div>
 
 ## 在內聯事件處理器中訪問事件參數 {#accessing-event-argument-in-inline-handlers}
 
@@ -163,7 +182,7 @@ options-api
 </button>
 ```
 
-composition-api
+<div class="composition-api" markdown="1">
 
 ```js
 function warn(message, event) {
@@ -175,7 +194,8 @@ function warn(message, event) {
 }
 ```
 
-options-api
+</div>
+<div class="options-api" markdown="1">
 
 ```js
 methods: {
@@ -188,6 +208,8 @@ methods: {
   }
 }
 ```
+
+</div>
 
 ## 事件修飾符 {#event-modifiers}
 
@@ -241,7 +263,6 @@ methods: {
 
 > 請勿同時使用 `.passive` 和 `.prevent`，因為 `.passive` 已經向瀏覽器表明了你*不想*阻止事件的默認行為。如果你這麽做了，則 `.prevent` 會被忽略，並且瀏覽器會拋出警告。
 
-
 ## 按鍵修飾符 {#key-modifiers}
 
 在監聽鍵盤事件時，我們經常需要檢查特定的按鍵。Vue 允許在 `v-on` 或 `@` 監聽按鍵事件時添加按鍵修飾符。
@@ -284,7 +305,6 @@ Vue 為一些常用的按鍵提供了別名：
 
 > 注意
 > 在 Mac 鍵盤上，meta 是 Command 鍵 (⌘)。在 Windows 鍵盤上，meta 鍵是 Windows 鍵 (⊞)。在 Sun 微機系統鍵盤上，meta 是鉆石鍵 (◆)。在某些鍵盤上，特別是 MIT 和 Lisp 機器的鍵盤及其後代版本的鍵盤，如 Knight 鍵盤，space-cadet 鍵盤，meta 都被標記為“META”。在 Symbolics 鍵盤上，meta 也被標識為“META”或“Meta”。
-
 
 舉例來說：
 
