@@ -12,7 +12,7 @@
 
 當使用構建步驟時，我們一般會將 Vue 組件定義在一個單獨的 `.vue` 文件中，這被叫做[單文件組件](/guide/scaling-up/sfc) (簡稱 SFC)：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```vue
 <script>
@@ -30,8 +30,8 @@ export default {
 </template>
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -45,11 +45,11 @@ const count = ref(0)
 </template>
 ```
 
-
+</div>
 
 當不使用構建步驟時，一個 Vue 組件以一個包含 Vue 特定選項的 JavaScript 對象來定義：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -65,8 +65,8 @@ export default {
 }
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js
 import { ref } from 'vue'
@@ -85,7 +85,7 @@ export default {
 }
 ```
 
-
+</div>
 
 這里的模板是一個內聯的 JavaScript 字符串，Vue 將會在運行時編譯它。你也可以使用 ID 選擇器來指向一個元素 (通常是原生的 `<template>` 元素)，Vue 將會使用其內容作為模板來源。
 
@@ -93,13 +93,11 @@ export default {
 
 ## 使用組件 {#using-a-component}
 
-
 > 我們會在接下來的指引中使用 SFC 語法，無論你是否使用構建步驟，組件相關的概念都是相同的。[示例](/examples/)一節中展示了兩種場景中的組件使用情況。
-
 
 要使用一個子組件，我們需要在父組件中導入它。假設我們把計數器組件放在了一個叫做 `ButtonCounter.vue` 的文件中，這個組件將會以默認導出的形式被暴露給外部。
 
-options-api
+<div class="options-api" markdown="1">
 
 ```vue
 <script>
@@ -120,9 +118,9 @@ export default {
 
 若要將導入的組件暴露給模板，我們需要在 `components` 選項上[注冊](/guide/components/registration)它。這個組件將會以其注冊時的名字作為模板中的標簽名。
 
+</div>
 
-
-composition-api
+<div class="composition-api" markdown="1">
 
 ```vue
 <script setup>
@@ -137,7 +135,7 @@ import ButtonCounter from './ButtonCounter.vue'
 
 通過 `<script setup>`，導入的組件都在模板中直接可用。
 
-
+</div>
 
 當然，你也可以全局地注冊一個組件，使得它在當前應用中的任何組件上都可以使用，而不需要額外再導入。關於組件的全局注冊和局部注冊兩種方式的利弊，我們放在了[組件注冊](/guide/components/registration)這一章節中專門討論。
 
@@ -150,14 +148,16 @@ import ButtonCounter from './ButtonCounter.vue'
 <ButtonCounter />
 ```
 
-options-api
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNqVUE1LxDAQ/StjLqusNHotcfHj4l8QcontLBtsJiGdiFL6301SdrEqyEJyeG9m3ps3k3gIoXlPKFqhxi7awDtN1gUfGR4Ts6cnn4gxwj56B5tGrtgyutEEoAk/6lCPe5MGhqmwnc9KhMRjuxCwFi3UrCk/JU/uGTC6MBjGglgdbnfPGBFM/s7QJ3QHO/TfxC+UzD21d72zPItU8uQrrsWvnKsT/ZW2N2wur45BI3KKdETlFlmphZsF58j/RgdQr3UJuO8G273daVFFtlstahngxSeoNezBIUzTYgPzDGwdjk1VkYvMj4jzF0nwsyQ=)
 
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNqVj91KAzEQhV/lmJsqlY3eSlr8ufEVhNys6ZQGNz8kE0GWfXez2SJUsdCLuZiZM9+ZM4qnGLvPQuJBqGySjYxMXOJWe+tiSIznwhz8SyieKWGfgsOqkyfTGbDSXsmFUG9rw+Ti0DPNHavD/faVEqGv5Xr/BXOwww4mVBNPnvOVklXTtKeO8qKhkj++4lb8+fL/mCMS7TEdAy6BtDfBZ65fVgA2s+L67uZMUEC9N0s8msGaj40W7Xa91qKtgbdQ0Ha0gyOM45E+TWDrKHeNIhfMr0DTN4U0me8=)
 
+</div>
 
 你會注意到，每當點擊這些按鈕時，每一個組件都維護著自己的狀態，是不同的 `count`。這是因為每當你使用一個組件，就創建了一個新的**實例**。
 
@@ -178,9 +178,9 @@ composition-api
 
 如果我們正在構建一個博客，我們可能需要一個表示博客文章的組件。我們希望所有的博客文章分享相同的視覺布局，但有不同的內容。要實現這樣的效果自然必須向組件中傳遞數據，例如每篇文章標題和內容，這就會使用到 props。
 
-Props 是一種特別的 attributes，你可以在組件上聲明注冊。要傳遞給博客文章組件一個標題，我們必須在組件的 props 列表上聲明它。這里要用到 <span class="options-api">[`props`](/api/options-state#props) 選項</span><span class="composition-api">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) 宏</span>：
+Props 是一種特別的 attributes，你可以在組件上聲明注冊。要傳遞給博客文章組件一個標題，我們必須在組件的 props 列表上聲明它。這里要用到 <span class="options-api" markdown="1">[`props`](/api/options-state#props) 選項</span><span class="composition-api" markdown="1">[`defineProps`](/api/sfc-script-setup#defineprops-defineemits) 宏</span>：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```vue
 <!-- BlogPost.vue -->
@@ -197,8 +197,8 @@ export default {
 
 當一個值被傳遞給 prop 時，它將成為該組件實例上的一個屬性。該屬性的值可以像其他組件屬性一樣，在模板和組件的 `this` 上下文中訪問。
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```vue
 <!-- BlogPost.vue -->
@@ -231,6 +231,7 @@ export default {
 }
 ```
 
+</div>
 
 一個組件可以有任意多的 props，默認情況下，所有 prop 都接受任意類型的值。
 
@@ -244,7 +245,7 @@ export default {
 
 在實際應用中，我們可能在父組件中會有如下的一個博客文章數組：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js
 export default {
@@ -261,8 +262,8 @@ export default {
 }
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js
 const posts = ref([
@@ -272,7 +273,7 @@ const posts = ref([
 ])
 ```
 
-
+</div>
 
 這種情況下，我們可以使用 `v-for` 來渲染它們：
 
@@ -284,16 +285,16 @@ const posts = ref([
  />
 ```
 
-options-api
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNp9UU1rhDAU/CtDLrawVfpxklRo74We2kPtQdaoaTUJ8bmtiP+9ia6uC2VBgjOZeXnz3sCejAkPnWAx4+3eSkNJqmRjtCU817p81S2hsLpBEEYL4Q1BqoBUid9Jmosi62rC4Nm9dn4lFLXxTGAt5dG482eeUXZ1vdxbQZ1VCwKM0zr3x4KBATKPcbsDSapFjOClx5d2JtHjR1KFN9fTsfbWcXdy+CZKqcqL+vuT/r3qvQqyRatRdMrpF/nn/DNhd7iPR+v8HCDRmDoj4RHxbfyUDjeFto8p8yEh1Rw2ZV4JxN+iP96FMvest8RTTws/gdmQ8HUr7ikere+yHduu62y//y3NWG38xIOpeODyXcoE8OohGYZ5VhhHHjl83sD4B3XgyGI=)
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNp9kU9PhDAUxL/KpBfWBCH+OZEuid5N9qSHrQezFKhC27RlDSF8d1tYQBP1+N78OpN5HciD1sm54yQj1J6M0A6Wu07nTIpWK+MwwPASI0qjWkQejVbpsVHVQVl30ZJ0WQRHjwFMnpT0gPZLi32w2h2DMEAUGW5iOOEaniF66vGuOiN5j0/hajx7B4zxxt5ubIiphKz+IO828qXugw5hYRXKTnqSydcrJmk61/VF/eB4q5s3x8Pk6FJjauDO16Uye0ZCBwg5d2EkkED2wfuLlogibMOTbMpf9tMwP8jpeiMfRdM1l8Tk+/F++Y6Cl0Lyg1Ha7o7R5Bn9WwSg9X0+DPMxMI409fPP1PELlVmwdQ==)
 
-
+</div>
 
 留意我們是如何使用 `v-bind` 來傳遞動態 prop 值的。當事先不知道要渲染的確切內容時，這一點特別有用。
 
@@ -303,9 +304,9 @@ composition-api
 
 讓我們繼續關注我們的 `<BlogPost>` 組件。我們會發現有時候它需要與父組件進行交互。例如，要在此處實現無障礙訪問的需求，將博客文章的文字能夠放大，而頁面的其余部分仍使用默認字號。
 
-在父組件中，我們可以添加一個 `postFontSize` <span class="options-api">數據屬性</span><span class="composition-api">ref </span>來實現這個效果：
+在父組件中，我們可以添加一個 `postFontSize` <span class="options-api" markdown="1">數據屬性</span><span class="composition-api" markdown="1">ref </span>來實現這個效果：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```js{6}
 data() {
@@ -318,8 +319,8 @@ data() {
 }
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```js{5}
 const posts = ref([
@@ -329,7 +330,7 @@ const posts = ref([
 const postFontSize = ref(1)
 ```
 
-
+</div>
 
 在模板中用它來控制所有博客文章的字體大小：
 
@@ -378,20 +379,20 @@ const postFontSize = ref(1)
 
 因為有了 `@enlarge-text="postFontSize += 0.1"` 的監聽，父組件會接收這一事件，從而更新 `postFontSize` 的值。
 
-options-api
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNqNUsFOg0AQ/ZUJMaGNbbHqidCmmujNxMRED9IDhYWuhV0CQy0S/t1ZYIEmaiRkw8y8N/vmMZVxl6aLY8EM23ByP+Mprl3Bk1RmCPexjJ5ljhBmMgFzYemEIpiuAHAFOzXQgIVeESNUKutL4gsmMLfbBPStVFTP1Bl46E2mup4xLDKhI4CUsMR+1zFABTywYTkD5BgzG8ynEj4kkVgJnxz38Eqaut5jxvXAUCIiLqI/8TcD/m1fKhTwHHIJYSEIr+HbnqikPkqBL/yLSMs23eDooNexel8pQJaksYeMIgAn4EewcyxjtnKNCsK+zbgpXILJEnW30bCIN7ZTPcd5KDNqoWjARWufa+iyfWBlV13wYJRvJtWVJhiKGyZiL4vYHNkJO8wgaQVXi6UGr51+Ndq5LBqMvhyrH9eYGePtOVu3n3YozWSqFsBsVJmt3SzhzVaYY2nm9l82+7GX5zTGjlTM1SyNmy5SeX+7rqr2r0NdOxbFXWVXIEoBGz/m/oHIF0rB5Pz6KTV6aBOgEo7Vsn51ov4GgAAf2A==)
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNp1Uk1PwkAQ/SuTxqQYgYp6ahaiJngzITHRA/UAZQor7W7TnaK16X93th8UEuHEvPdm5s3bls5Tmo4POTq+I0yYyZTAIOXpLFAySXVGUEKGEVQQZToBl6XukXqO9XahDbXc2OsAO5FlAIEKtWJByqCBqR01WFqiBLnxYTIEkhSjD+5rAV86zxQW8C1pB+88Aaphr73rtXbNVqrtBeV9r/zYFZYHacBoiHLFykB9Xgfq1NmLVvQmf7E1OGFaeE0anAMXhEkarwhtRWIjD+AbKmKcBk4JUdvtn8+6ARcTu87hLuCf6NJpSoDDKNIZj7BtIFUTUuB0tL/HomXHcnOC18d1TF305COqeJVtcUT4Q62mtzSF2/GkE8/E8b1qh8Ljw/if8I7nOkPn9En/+Ug2GEmFi0ynZrB0azOujbfB54kki5+aqumL8bING28Yr4xh+2vePrI39CnuHmZl2TwwVJXwuG6ZdU6kFTyGsQz33HyFvH5wvvyaB80bACwgvKbrYgLVH979DQc=)
 
+</div>
 
+我們可以通過 <span class="options-api" markdown="1">[`emits`](/api/options-state#emits) 選項</span><span class="composition-api" markdown="1">[`defineEmits`](/api/sfc-script-setup#defineprops-defineemits) 宏</span>來聲明需要拋出的事件：
 
-我們可以通過 <span class="options-api">[`emits`](/api/options-state#emits) 選項</span><span class="composition-api">[`defineEmits`](/api/sfc-script-setup#defineprops-defineemits) 宏</span>來聲明需要拋出的事件：
-
-options-api
+<div class="options-api" markdown="1">
 
 ```vue{5}
 <!-- BlogPost.vue -->
@@ -403,8 +404,8 @@ export default {
 </script>
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```vue{4}
 <!-- BlogPost.vue -->
@@ -414,9 +415,11 @@ defineEmits(['enlarge-text'])
 </script>
 ```
 
+</div>
+
 這聲明了一個組件可能觸發的所有事件，還可以對事件的參數進行[驗證](/guide/components/events#validate-emitted-events)。同時，這還可以讓 Vue 避免將它們作為原生事件監聽器隱式地應用於子組件的根元素。
 
-composition-api
+<div class="composition-api" markdown="1">
 
 和 `defineProps` 類似，`defineEmits` 僅可用於 `<script setup>` 之中，並且不需要導入，它返回一個等同於 `$emit` 方法的 `emit` 函數。它可以被用於在組件的 `<script setup>` 中拋出事件，因為此處無法直接訪問 `$emit`：
 
@@ -441,7 +444,7 @@ export default {
 }
 ```
 
-
+</div>
 
 以上就是目前你需要了解的關於組件自定義事件的所有知識了。如果你看完本章節後還想知道更多細節，請深入閱讀[組件事件](/guide/components/events)章節。
 
@@ -459,7 +462,6 @@ export default {
 
 > This is an Error for Demo Purposes
 > Something bad happened.
-
 
 這可以通過 Vue 的自定義 `<slot>` 元素來實現：
 
@@ -480,16 +482,16 @@ export default {
 
 如上所示，我們使用 `<slot>` 作為一個占位符，父組件傳遞進來的內容就會渲染在這里。
 
-options-api
+<div class="options-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpVUcFOwzAM/RUTDruwFhCaUCmThsQXcO0lbbKtIo0jx52Kpv07TreWouTynl+en52z2oWQnXqrClXGhtrA28q3XUBi2DlL/IED7Ak7WGX5RKQHq8oDVN4Oo9TYve4dwzmxDcp7bz3HAs5/LpfKyy3zuY0Atl1wmm1CXE5SQeLNX9hZPrb+ALU2cNQhWG9NNkrnLKIt89lGPahlyDTVogVAadoTNE7H+F4pnZTrGodKjUUpRyb0h+0nEdKdRL3CW7GmfNY5ZLiiMhfP/ynG0SL/OAuxwWCNMNncbVqSQyrgfrPZvCVcIxkrxFMYIKJrDZA1i8qatGl72ehLGEY6aGNkNwU8P96YWjffB8Lem/Xkvn9NR6qy+fRd14FSgopvmtQmzTT9Toq9VZdfIpa5jQ==)
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [在演練場中嘗試一下](https://play.vuejs.org/#eNpVUEtOwzAQvcpgFt3QBBCqUAiRisQJ2GbjxG4a4Xis8aQKqnp37PyUyqv3mZn3fBVH55JLr0Umcl9T6xi85t4VpW07h8RwNJr4Cwc4EXawS9KFiGO70ubpNBcmAmDdOSNZR8T5Yg0IoOQf7DSfW9tAJRWcpXPaapWM1nVt8ObpukY8ie29GHNzAiBX7QVqI73/LIWMzn2FQylGMcieCW1TfBMhPYSoE5zFitLVZ5BhQnkadt6nGKt5/jMafI1Oq8Ak6zW4xrEaDVIGj4fD4SPiCknpQLy4ATyaVgFptVH2JFXb+wze3DDSTioV/iaD1+eZqWT92xD2Vu2X7af3+IJ6G7/UToVigpJnTzwTO42eWDnELsTtH/wUqH4=)
 
-
+</div>
 
 以上就是目前你需要了解的關於插槽的所有知識了。如果你看完本章節後還想知道更多細節，請深入閱讀[組件插槽](/guide/components/slots)章節。
 
@@ -497,34 +499,35 @@ composition-api
 
 有些場景會需要在兩個組件間來回切換，比如 Tab 界面：
 
-options-api
+<div class="options-api" markdown="1">
 
 [在演練場中查看示例](https://play.vuejs.org/#eNqNVE2PmzAQ/Ssj9kArLSHbrXpwk1X31mMPvS17cIxJrICNbJMmivLfO/7AEG2jRiDkefP85sNmztlr3y8OA89ItjJMi96+VFJ0vdIWfqqOQ6NVB/midIYj5sn9Sxlrkt9b14RXzXbiMElEO5IAKsmPnljzhg6thbNDmcLdkktrSADAJ/IYlj5MXEc9Z1w8VFNLP30ed2luBy1HC4UHrVH2N90QyJ1kHnUALN1gtLeIQu6juEUMkb8H5sXHqiS+qzK1Cw3Lu76llqMFsKrFAVhLjVlXWc07VWUeR89msFbhhhAWDkWjNJIwPgjp06iy5CV7fgrOOTgKv+XoKIIgpnoGyiymSmZ1wnq9dqJweZ8p/GCtYHtUmBMdLXFitgDnc9ju68b0yxDO1WzRTEcFRLiUJsEqSw3wwi+rMpFDj0psEq5W5ax1aBp7at1y4foWzq5R0hYN7UR7ImCoNIXhWjTfnW+jdM01gaf+CEa1ooYHzvnMVWhaiwEP90t/9HBP61rILQJL3POMHw93VG+FLKzqUYx3c2yjsOaOwNeRO2B8zKHlzBKQWJNH1YHrplV/iiMBOliFILYNK5mOKdSTMviGCTyNojFdTKBoeWNT3s8f/Vpsd7cIV61gjHkXnotR6OqVkJbrQKdsv9VqkDWBh2bpnn8VXaDcHPexE4wFzsojO9eDUOSVPF+65wN/EW7sHRsi5XaFqaexn+EH9Xcpe8zG2eWG3O0/NVzUaeJMk+jGhUXlNPXulw5j8w7t2bi8X32cuf/Vv/wF/SL98A==)
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 [在演練場中查看示例](https://play.vuejs.org/#eNqNVMGOmzAQ/ZURe2BXCiHbrXpwk1X31mMPvS1V5RiTWAEb2SZNhPLvHdvggLZRE6TIM/P8/N5gpk/e2nZ57HhCkrVhWrQWDLdd+1pI0bRKW/iuGg6VVg2ky9wFDp7G8g9lrIl1H80Bb5rtxfFKMcRzUA+aV3AZQKEEhWRKGgus05pL+5NuYeNwj6mTkT4VckRYujVY63GT17twC6/Fr4YjC3kp5DoPNtEgBpY3bU0txwhgXYojsJoasymSkjeqSHweK9vOWoUbXIC/Y1YpjaDH3wt39hMI6TUUSYSQAz8jArPT5Mj+nmIhC6zpAu1TZlEhmXndbBwpXH5NGL6xWrADMsyaMj1lkAzQ92E7mvYe8nCcM24xZApbL5ECiHCSnP73KyseGnvh6V/XedwS2pVjv3C1ziddxNDYc+2WS9fC8E4qJW1W0UbUZwKGSpMZrkX11dW2SpdcE3huT2BULUp44JxPSpmmpegMgU/tyadbWpZC7jCxwj0v+OfTDdU7ITOrWiTjzTS3Vei8IfB5xHZ4PmqoObMEJHryWXXkuqrVn+xEgHZWYRKbh06uLyv4iQq+oIDnkXSQiwKymlc26n75WNdit78FmLWCMeZL+GKMwlKrhLRcBzhlh51WnSwJPFQr9/zLdIZ007w/O6bR4MQe2bseBJMzer5yzwf8MtzbOzYMkNsOY0+HfoZv1d+lZJGMg8fNqdsfbbio4b77uRVv7I0Li8xxZN1PHWbeHdyTWXc/+zgw/8t/+QsROe9h)
 
-
+</div>
 
 上面的例子是通過 Vue 的 `<component>` 元素和特殊的 `is` attribute 實現的：
 
-options-api
+<div class="options-api" markdown="1">
 
 ```vue-html
 <!-- currentTab 改變時組件也改變 -->
 <component :is="currentTab"></component>
 ```
 
-
-composition-api
+</div>
+<div class="composition-api" markdown="1">
 
 ```vue-html
 <!-- currentTab 改變時組件也改變 -->
 <component :is="tabs[currentTab]"></component>
 ```
 
+</div>
 
 在上面的例子中，被傳給 `:is` 的值可以是以下幾種：
 
@@ -544,7 +547,6 @@ composition-api
 > - 單文件組件
 > - 內聯模板字符串 (例如 `template: '...'`)
 > - `<script type="text/x-template">`
-
 
 ### 大小寫區分 {#case-insensitivity}
 
@@ -617,9 +619,7 @@ const BlogPost = {
 </table>
 ```
 
-
 > 當使用在原生 HTML 元素上時，`is` 的值必須加上前綴 `vue:` 才可以被解析為一個 Vue 組件。這一點是必要的，為了避免和原生的[自定義內置元素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)相混淆。
-
 
 以上就是你需要了解的關於 DOM 內模板解析的所有注意事項，同時也是 Vue *基礎*部分的所有內容。祝賀你！雖然還有很多需要學習的，但你可以先暫停一下，去用 Vue 做一些有趣的東西，或者研究一些[示例](/examples/)。
 
