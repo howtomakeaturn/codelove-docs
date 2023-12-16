@@ -114,7 +114,7 @@ export default {
 
 你也可以直接在事件監聽器中改變一個 ref：
 
-```vue-html{1}
+```vue-html
 <button @click="count++">
   {{ count }}
 </button>
@@ -145,7 +145,7 @@ export default {
 
 然後，暴露的方法可以被用作事件監聽器：
 
-```vue-html{1}
+```vue-html
 <button @click="increment">
   {{ count }}
 </button>
@@ -157,7 +157,7 @@ export default {
 
 在 `setup()` 函數中手動暴露大量的狀態和方法非常繁瑣。幸運的是，我們可以通過使用[單文件組件 (SFC)](/guide/scaling-up/sfc) 來避免這種情況。我們可以使用 `<script setup>` 來大幅度地簡化代碼：
 
-```vue{1}
+```vue
 <script setup>
 import { ref } from 'vue'
 

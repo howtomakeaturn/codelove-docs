@@ -334,7 +334,7 @@ const postFontSize = ref(1)
 
 在模板中用它來控制所有博客文章的字體大小：
 
-```vue-html{1,7}
+```vue-html
 <div :style="{ fontSize: postFontSize + 'em' }">
   <BlogPost
     v-for="post in posts"
@@ -346,7 +346,7 @@ const postFontSize = ref(1)
 
 然後，給 `<BlogPost>` 組件添加一個按鈕：
 
-```vue{5}
+```vue
 <!-- BlogPost.vue, 省略了 <script> -->
 <template>
   <div class="blog-post">
@@ -358,7 +358,7 @@ const postFontSize = ref(1)
 
 這個按鈕目前還沒有做任何事情，我們想要點擊這個按鈕來告訴父組件它應該放大所有博客文章的文字。要解決這個問題，組件實例提供了一個自定義事件系統。父組件可以通過 `v-on` 或 `@` 來選擇性地監聽子組件上拋的事件，就像監聽原生 DOM 事件那樣：
 
-```vue-html{3}
+```vue-html
 <BlogPost
   ...
   @enlarge-text="postFontSize += 0.1"
@@ -367,7 +367,7 @@ const postFontSize = ref(1)
 
 子組件可以通過調用內置的 [**`$emit`** 方法](/api/component-instance#emit)，通過傳入事件名稱來拋出一個事件：
 
-```vue{5}
+```vue
 <!-- BlogPost.vue, 省略了 <script> -->
 <template>
   <div class="blog-post">
@@ -394,7 +394,7 @@ const postFontSize = ref(1)
 
 <div class="options-api" markdown="1">
 
-```vue{5}
+```vue
 <!-- BlogPost.vue -->
 <script>
 export default {
@@ -407,7 +407,7 @@ export default {
 </div>
 <div class="composition-api" markdown="1">
 
-```vue{4}
+```vue
 <!-- BlogPost.vue -->
 <script setup>
 defineProps(['title'])
@@ -465,7 +465,7 @@ export default {
 
 這可以通過 Vue 的自定義 `<slot>` 元素來實現：
 
-```vue{4}
+```vue
 <template>
   <div class="alert-box">
     <strong>This is an Error for Demo Purposes</strong>

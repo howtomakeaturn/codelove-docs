@@ -132,7 +132,7 @@
 
 <div class="options-api" markdown="1">
 
-```html{3,4}
+```html
 <div id="app">{{ message }}</div>
 
 <script type="module">
@@ -152,7 +152,7 @@
 
 <div class="composition-api" markdown="1">
 
-```html{3,4}
+```html
 <div id="app">{{ message }}</div>
 
 <script type="module">
@@ -196,7 +196,7 @@ import { createApp } from 'vue'
 
 <div class="options-api" markdown="1">
 
-```html{1-7,12}
+```html
 <script type="importmap">
   {
     "imports": {
@@ -226,7 +226,7 @@ import { createApp } from 'vue'
 
 <div class="composition-api" markdown="1">
 
-```html{1-7,12}
+```html
 <script type="importmap">
   {
     "imports": {
